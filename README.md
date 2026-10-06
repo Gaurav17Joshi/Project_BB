@@ -41,17 +41,21 @@ pip install -r requirements.txt
 | Key in a file elsewhere | `$env:OPENAI_KEY_FILE="C:\path\key.txt"` | `export OPENAI_KEY_FILE=~/path/key.txt` |
 | `.env` file in this folder | copy `.env.example` to `.env` and fill it in | same |
 
-**3. Run**
+**3. Use the saved abstraction**
+
+The abstraction of the 31 supplied documents is already built and included (`outputs/closed/abstraction.db`),
+along with the answers to the five development questions (`outputs/closed/answers/`). Nothing needs to be
+processed first.
+
+Ask new questions (needs the key; the saved abstraction is read, never rebuilt):
 
 ```bash
-python cli.py process                      # ingest + extract new documents + reconcile
-python cli.py answer-file                  # answer data/questions.json -> outputs/closed/answers/
 python cli.py ask "How many group minutes did Rowan get in the week of Jan 19?"
-python web/server.py --open                # browser chat at http://127.0.0.1:8000
-python scripts/benchmark.py                # measured benchmark -> outputs/closed/benchmark.md
+python web/server.py --open                # the same, as a browser chat at http://127.0.0.1:8000
+python cli.py answer-file                  # re-answer data/questions.json -> outputs/closed/answers/
 ```
 
-These need **no key**; they only read the saved abstraction (included in `outputs/closed/`):
+Inspect the abstraction (no key needed):
 
 ```bash
 python cli.py show contacts                # one row per reconciled contact, with inclusion decision and minutes
@@ -59,12 +63,20 @@ python cli.py show weeks                   # weekly days / minutes / hours
 python cli.py show goal                    # weekly verdict vs the treatment-plan goal
 python cli.py show counts | issues | measures | patients
 python cli.py show day --date 2026-01-19   # every source record behind one day
-python cli.py rebuild                      # re-verify + re-reconcile from cached extractions
 ```
 
-New documents: drop them into `data/documents/` (or pass `--docs DIR`) and run `process` again. Only unseen
-documents are sent to the model, and only the affected patients are re-reconciled. New questions use the saved
-abstraction; nothing is rebuilt per question.
+**4. Process new documents**
+
+Drop new files into `data/documents/` (or pass `--docs DIR`) and run:
+
+```bash
+python cli.py process                      # extracts only unseen documents, re-reconciles affected patients
+```
+
+Documents already in the abstraction are skipped (re-running `process` on the supplied set makes 0 model
+calls), and duplicate copies are detected by fingerprint and never change a number. To rebuild everything from
+scratch, delete `outputs/closed/abstraction.db` first (about 40 s and $0.02). `python scripts/benchmark.py`
+measures that cold run in a separate scratch database, without touching the saved one.
 
 The browser chat (`web/`, standard library only, screenshot at the end) shows the patient summary from the
 abstraction and answers questions through the same pipeline as `cli.py ask`. Each answer shows its quote check,
@@ -76,6 +88,7 @@ passages highlighted.
 | Path | Contents |
 |---|---|
 | `SOLUTION.md` | Detailed write-up: design, rules, every contact, results, checks, both backends, cost. |
+| `PERFORMANCE.md` | Detailed measurements for both backends. |
 | `outputs/closed/` (GPT, the main results), `outputs/open/` (local model, for comparison) | Each has `abstraction.db` (SQLite), `abstraction.json` and `contacts.csv` (exports), `answers/` (DEV-01–05 plus unseen NEW-01–03, each with its quote check and tool calls), `benchmark.md` / `.json`. |
 | `outputs/comparison.md` | Local vs closed abstraction, contact by contact. |
 | `logs/<closed|open>/llm_calls.jsonl` | Every model call: step, model, latency, tokens. The `runs` table in each DB logs every process/ask run. |
@@ -86,42 +99,18 @@ passages highlighted.
 
 ## The abstraction
 
-Three layers, all in one SQLite file. Every fact keeps its source document, a verbatim quote, and the quote's
-character offsets and line number.
-
-1. **Documents.** One row per distinct text (SHA-256 of whitespace-normalised text), so duplicate copies of a
-   file are detected before any model call. Extractions are cached by `(document, model, prompt version)`.
-2. **Facts** (one row per claim, from the model): service records (one per encounter mentioned in a document,
-   including no-shows and cancellations), corrections, treatment-plan goals, standardized measures, clinical
-   observations. The model reports **times as written**, never totals; `verify.py` locates every quote in the
-   source.
-3. **Reconciled** (pure code, `reconcile.py`): one `contacts` row per real encounter, with status, the basis for
-   that status, whether it counts toward the plan goal (`included / excluded / uncertain`) and why, minutes as a
-   `lo–hi` range with the calculation written out, and links to every source record. Plus `measures_distinct`
-   (one row per administration) and `issues` (conflicts, merged duplicates, how each was resolved).
-
-### Reconciliation rules (`reconcile.py`, the same for both backends)
-
-- Records are grouped by encounter or appointment ID. Notes from two clinicians, resent copies, and telehealth
-  reconnects under one appointment become **one contact**.
-- Evidence tiers. **A:** signed notes, attendance records, corrections, cancellation and no-show logs. **B:**
-  schedule exports and copies. **C:** drafts, templates and billing. Status comes from the highest tier that speaks
-  to attendance. **Tier C never establishes that care happened.** A later date alone never overrides; only explicit
-  corrections replace a value, and only the field they name.
-- For arrival and departure times, attendance records and corrections outrank narrative notes within a tier.
-- Minutes = patient-present intervals − documented breaks/disconnects, after corrections. If final records
-  disagree and nothing resolves it, the contact gets a range and a `duration_conflict` issue. Weekly verdicts are
-  `met` / `not_met` / `indeterminate` depending on whether the whole range clears the threshold.
-- **Schedule-echo rule.** If two signed records for one session disagree and one gives exactly the booked slot,
-  that value is set aside as a likely copied default and logged as an issue for review. This is the failure the
-  Jan 19 roster itself shows (BH-D102, corrected by BH-D103).
-- What counts toward the goal is read from the treatment plan's own definition (extracted), not hard-coded. Only
-  goals with numeric thresholds are used. Records without a single valid calendar date are flagged and left out.
-
-No patient facts or answers are encoded anywhere; the rules are about document types, not about Rowan. Several
-of these rules were added after the local model's first run exposed failure modes (see SOLUTION.md section 8).
-Re-running the closed model's cached extractions through the final rules gives identical results, contact by
-contact.
+The abstraction lives in a single SQLite file and is built in three layers, where every fact keeps the document
+it came from, a verbatim quote, and that quote's exact position in the source. The first layer is the documents
+themselves, fingerprinted by content so a duplicate copy is caught before it ever reaches the model. The second is
+what the model extracts—one row per claim, covering service records (no-shows and cancellations included),
+corrections, plan goals, PHQ-9 scores and clinical observations—where I made the model report times exactly as
+written and never add them up, and code then checks that every quote really exists in the source. The third layer
+is where the actual decisions happen, all in plain code: records about the same encounter merge into one contact,
+signed records outrank schedule exports and copies, and a draft or a billing entry can never prove that care took
+place. A later document only overrides an earlier one through an explicit correction, and only for the field it
+names. Minutes are patient-present time minus documented breaks, and when signed records genuinely disagree, the
+contact keeps a range and an open issue rather than a guess. None of the rules mention Rowan, dates or document
+IDs—they're about document types—and the full list is in SOLUTION.md section 3.4.
 
 ## Results on the development questions
 
@@ -138,105 +127,83 @@ contact.
 
 Full answers with quotes: `outputs/closed/answers/` and `outputs/open/answers/`.
 
-### Closed vs local model
-
-The local abstraction matches the closed one on every headline number and on 20/20 encounter contacts
-(`outputs/comparison.md`). It took several steps to get there:
-
-| Local version | Same outcome as closed | Headline results |
-|---|---:|---|
-| v1: same prompt as closed, no extra safeguards | 13/20 | **Wrong:** weeks 1–2 and 4 marked "met"; 615–655 min |
-| + code safeguards (numeric goals only; attendance records outrank notes for times) | 14/20 | sessions right, minutes still off (Jan 6) |
-| + prompt v2 (rules aimed at the observed mistakes) | 18/20 | Jan 6 and Jan 22 became ranges; one document failed (output loop) |
-| + retry with sampling, schedule-echo rule, date validation | **20/20** | all match |
-
-What still differs is the writing. The local answers repeat some of the 9B model's labelling errors; one
-called the correction BH-D103 a "duplicate copy". The numbers are right because code computes them.
-Extraction quotes were found exactly 136/159 times for the local model and 137/137 for the closed model; the
-rest are flagged in `issues`.
-
-How the comparison was produced: the local model runs through the same code with `--backend ollama`
-(`backbone/llm_ollama.py`), using `qwen3.5:9b` in Ollama on an RTX 2080 Ti (11 GB). Its saved results are in
-`outputs/open/`, and `python scripts/compare_backends.py` rebuilds `outputs/comparison.md` from the two saved
-databases without calling either model. Re-running the local extraction is not needed to review it, and takes
-about 23 minutes on that GPU. Details are in SOLUTION.md section 8.
-
 ## Design decisions tested
 
-**1. Code-checked citations.** Every answer is checked by code: each quotation must be found in a document
-cited on the same line. If any fails, the model gets one repair pass with the failing quotes listed, and the
-result is printed under each answer.
-- Before the check, 3 of 94 quotations in the first closed run were not in the source. Two were invented
-  paraphrases. One of those also carried a factual error: it called BH-D104 a copy of the *final* roster, when
-  it is a resent copy of the *original, uncorrected* roster.
-- With the check, every quotation verified in two full closed benchmark runs (103/103 and 74/74, 8 questions
-  each). The repair pass was needed in 1 and 2 answers of 8.
+The decision I learned the most from was checking citations in code. Since every number comes from the query
+functions, I expected the answers to be trustworthy once the arithmetic was right—but in the first full run, 3 of
+94 quotations weren't actually in the source. Two were paraphrases dressed up as quotes, and one carried a real
+factual error: it called BH-D104 a copy of the *final* roster when it's a resent copy of the *original,
+uncorrected* one, which is exactly the distinction that decides whether the Jan 19 correction holds. So now code
+re-locates every quotation in the document it cites, gives the model one repair pass on a miss, and prints the
+result under the answer. With that in place, every quotation verified across two full benchmark runs (103/103 and
+74/74). What this taught me is that grounding a model in tool outputs isn't enough on its own—the errors simply
+move from the numbers into the wording around them, so the quotes need checking too.
 
-What I learned: the numbers were never the problem, because they come from code. The model's errors showed up
-in the wording around the evidence, so the quotes themselves have to be checked.
-
-**2. Thinking on or off for local extraction.** Tested on 4 hard documents (`scripts/compare_think.py`): thinking
-was about 4× slower (167–193 s vs 25–74 s per document), fixed one document, left the important errors in place,
-and looped past the 12K-token cap on one. Decision: thinking off for extraction, on for answering.
+I also tested whether letting the local model "think" before extracting would help. On four hard documents it was
+about 4× slower, fixed one document, left the important errors in place and got stuck in a loop on another, so
+thinking stays off for extraction and on for answering, where choosing the right tools does benefit from planning.
 
 ## Observed limitation
 
-**Questions that assume facts the record does not contain.** Asked how care changed "before and after a
-treatment-plan change", the closed system first invented a change. It treated the plan's signing on Jan 5 as the
-change and produced a confident before/after table. The record has one plan version. I fixed this case two ways:
-`plan_change_comparison` now refuses when no second plan version exists, and the prompt tells the model to say
-when a premise is absent. But the general failure, bending other events to fit a question's premise, is still
-possible for other question types.
-
-How I would investigate it next: write a set of false-premise and out-of-scope questions (a plan change, a
-second patient, an anxiety scale that was never given, a session on a date with none), run them on both
-backends, and measure how often an answer asserts something the abstraction doesn't contain. Then test whether
-a `what_does_the_record_contain` tool that runs before answering lowers that rate.
-
-A smaller judgement I made deliberately: for the Jan 26 duration conflict, the system reports a 40–50 minute
-range and does not pick a winner. The second note is more specific ("Rowan entered the treatment room at
-09:10"), but neither note corrects the other.
-
-## Performance (measured)
-
-Full tables: `outputs/closed/benchmark.md` and `outputs/open/benchmark.md`.
-
-| Measured on the 31 documents | `openai` (gpt-6-luna) | `ollama` (qwen3.5:9b, RTX 2080 Ti) |
-|---|---:|---:|
-| Process all documents, cold | 40 s (8 workers) | 1,357 s = 22.6 min (1 at a time, ~44 s per document) |
-| Extraction tokens (input / output) | 76K / 30K | 39K / 45K |
-| Re-run with nothing new; adding duplicate copies | 0.05 s, 0 model calls | 0.05 s, 0 model calls |
-| Restart and query the saved abstraction | 0.17 s | 0.19 s |
-| Code-only query (counts, weeks, verdicts) | 1–5 ms | 1–5 ms |
-| One question through the model (8 questions) | 14–93 s, median 29 s | 20–277 s, median 63 s |
-| Answer quotes verified against sources | 74/74 | 40/47 (the 7 failures are shown with their answers) |
-| Saved abstraction (SQLite, incl. a copy of the 49 KB source text) | 476 KB | 560 KB |
-| Cost | $0.023 extraction (first-ever run), $0.028 for all 8 questions | $0 (local; machine time and power only) |
-
-Both backends give the same headline results. The difference is speed and wording: the local model is about 34×
-slower to extract on this GPU, and its answers less often quote the sources word for word. The check catches
-that, and the unverified quotes are listed under each answer rather than hidden.
+The limitation that worried me most is questions that assume something the record doesn't contain. When I asked
+how care changed "before and after a treatment-plan change," the system invented one—it treated the plan's signing
+on Jan 5 as the change and produced a confident before/after table, even though the record has only one plan
+version. I fixed that case by making `plan_change_comparison` refuse when no second version exists and telling the
+model to say plainly when a premise is missing, but the underlying tendency to bend events to fit a question can
+still show up elsewhere. To investigate it properly, I'd write a set of false-premise questions—a plan change, a
+second patient, a scale that was never given, a session on an empty date—run them on both backends, and measure how
+often an answer claims something the abstraction doesn't hold. Then I'd test whether a
+`what_does_the_record_contain` tool, called before answering, brings that rate down. One smaller judgement I made
+on purpose: for the Jan 26 conflict the system reports 40–50 minutes instead of picking a winner, because neither
+note corrects the other.
 
 ## Scaling to 500K–1M documents (estimates, not measured)
 
-- **First bottleneck at 1M documents: extraction throughput and cost.** `extract.run_extraction` makes one model
-  call per document, about 2.5K input and 1K output tokens each.
-  - Closed: about 2.5B input and 1B output tokens, about **$730** at the standard price ($365 for 500K documents),
-    half with the Batch API. About 14 days at 8-way concurrency, so API rate limits set the pace.
-  - Local: about 44 s per document one at a time on the RTX 2080 Ti, so roughly **250 days for 500K documents** and 500 days for 1M on one such GPU. No per-token cost, but it only scales with more or faster GPUs and a batching server.
-  - What I'd change: the Batch API for the backfill (closed) or a batching server such as vLLM on more GPUs
-    (local); send structured document types (rosters, exports, billing) to a cheaper model or a template parser;
-    keep the static system prompt first so prompt caching applies. Daily new documents stay cheap, since only new
-    hashes are extracted.
-- **Next: the answering step.** `ask.answer` puts `list_patients()` into the prompt, which breaks at about 100K
-  patients. The collection-wide tools recompute every patient on the fly (3–4 ms each, so about 6 minutes for
-  100K patients) and return full lists. What I'd change: materialise a per-patient weekly table at reconcile
-  time, return aggregates plus paginated IDs, and drop the patient list from the prompt.
-- **Then:** `ingest.ingest` re-hashes every file on each run (index by path, size and modified time instead);
-  `search_documents` scans all text (use SQLite FTS5); SQLite allows one writer (move to Postgres once several
-  workers write at once).
-- **Repeated reviews:** reconciliation is partitioned by patient, so a new document re-reconciles one patient in
-  milliseconds. A change to the extraction prompt invalidates every cached extraction for that backend.
+I expect the first bottleneck at a million documents to be extraction, in `extract.run_extraction`, which makes one
+model call per document at roughly 2.5K input and 1K output tokens. For the GPT version that comes to about 2.5B
+input and 1B output tokens—around **$730** at the standard price ($365 for 500K documents), or half that through the
+Batch API—and about 14 days at the current 8-way concurrency, so API rate limits end up setting the pace. The local
+model would need roughly 500 days on a single RTX 2080 Ti, so it only becomes realistic with more GPUs and a batching
+server like vLLM. Either way, I'd route simple structured documents like rosters, exports and billing to a cheaper
+model or a template parser, and keep the static prompt first so prompt caching applies. The good news is that daily
+arrivals stay cheap, since only unseen fingerprints get extracted and only the affected patient is re-reconciled,
+which takes milliseconds.
+
+After extraction, the next pressure point is answering: `ask.answer` puts the patient list into the prompt, and the
+collection-wide tools recompute every patient on the fly, which would take about 6 minutes at 100K patients. I'd
+materialise a per-patient weekly table at reconcile time and have the tools return aggregates with paginated IDs.
+Beyond that, ingest re-hashes every file on each run instead of indexing by path, size and modification time,
+keyword search scans all text instead of using SQLite FTS5, and SQLite's single writer would have to become Postgres
+once several workers write at once.
+
+## Closed vs local model
+
+Out of curiosity, I also ran the exact same pipeline on a small open model—`qwen3.5:9b` running locally through
+Ollama on an RTX 2080 Ti—to see how much of the result depends on the model and how much on the code. It ended up
+matching GPT on every headline number and on all 20 encounter contacts (`outputs/comparison.md`), but it didn't start
+there: the first run got only 13 of 20 right and marked almost every week as "met," because the 9B model logged
+narrative goals like "continue the plan" as treatment goals and copied scheduled times into notes as if they were
+real attendance. General safeguards in code, clearer extraction rules and a retry when the model got stuck repeating
+itself brought it to 20/20, and re-running GPT's cached extractions through the same final rules changed nothing.
+What still differs is the writing—the local answers repeat some of the small model's labelling mistakes, even though
+the numbers stay right because code computes them. Its saved results are in `outputs/open/`, and the full story is
+in SOLUTION.md section 8.
+
+## Performance (measured)
+
+How the two compare on the 31 supplied documents and the 8 benchmark questions:
+
+| | Local 9B | GPT-6 Luna |
+|---|---|---|
+| Processing all 31 documents | 22.6 minutes | 35–40 seconds |
+| Typical question | 45–63 seconds | 25–29 seconds |
+| Answer quotes verified | 40 of 47 | all of them |
+| Cost | $0 | about $0.04 per full run |
+
+Both give the same headline results; the difference is speed and how faithfully the answers quote their sources.
+The detailed measurements—cold and warm runs, restarts, code-only queries, token counts and sizes—are in
+[PERFORMANCE.md](PERFORMANCE.md), and the raw benchmark output is in `outputs/closed/benchmark.md` and
+`outputs/open/benchmark.md`.
 
 ## Models, settings, assistance
 
@@ -250,9 +217,10 @@ that, and the unverified quotes are listed under each answer rather than hidden.
   thinking off and the extra local-model rules (prompt version `extract-v2-local`), and retries truncated JSON at
   temperature 0.3, then 0.6. Answering runs with thinking on, and tool results are cut at 24K characters so a
   prompt never overflows the context window.
-- **Coding assistance:** Claude Code (Claude Opus 5.5, `claude-opus-5-5`) wrote the code with me; I directed the
+- **Coding assistance:** Claude Code (Claude Opus 5.5, `claude-opus-5-5`) wrote the code with me; 
+  I first understood the task, read a few documents, and then worte Rough_idea.txt and then worked with claude to form the full Plan.md, and then it coded the thing up, with my comments and steering., also checked the 
   design and reviewed the outputs against the source documents.
-- **Runtime and cost:** see Performance. All closed-model development work, about 300 model calls, cost about $0.17.
+- **Runtime and cost:** see Performance and PERFORMANCE.md. All closed-model development work, about 300 model calls, cost about $0.17.
 
 ## Incomplete work and trade-offs
 
