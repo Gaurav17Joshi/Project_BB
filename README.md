@@ -231,6 +231,19 @@ The detailed measurements—cold and warm runs, restarts, code-only queries, tok
 - The SQLite file keeps a copy of each document's text so quotes can be looked up. At scale, the text would live
   in object storage instead.
 
+## Thinking settings
+
+| Step | GPT-6 Luna (main system) | Local qwen3.5:9b (comparison only) |
+|---|---|---|
+| Extraction, once per document | low reasoning effort | off |
+| Answering a question (choosing queries and writing the answer) | medium | on |
+| Repair pass, only when a quote fails the check | low | on |
+| Ingest, verify, reconcile, all calculations, quote check | no model, plain code | no model, plain code |
+
+Extraction is mostly careful reading, so it runs on low; answering gets medium because it has to plan its queries.
+Ollama only has on or off, and I turned it off for extraction after the test above showed it was 4× slower without
+fixing the important errors. Settings live in `backbone/config.py` (extraction) and `backbone/ask.py` (answering).
+
 ## Browser chat
 
 `python web/server.py --open` serves this page at http://127.0.0.1:8000. It answers with the GPT backend from the
