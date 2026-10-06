@@ -1,0 +1,15 @@
+Document ID: BH-D016
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Program operations
+Patient copy: Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Related encounter: HG-E108
+Notice entered 2026-01-15, 08:12 local by N. Ellis
+
+The coping skills group scheduled for January 15 from 10:00 to 11:30 is cancelled by the clinic because of staff illness. A covering facilitator is unavailable for this morning's group. The group room has been released from the schedule, and registered participants are being contacted before the planned start time.
+
+08:15: Portal notice delivered to Rowan's account. The notice states that the office initiated the cancellation and that the participant should not come to the group room this morning.
+
+08:37: Rowan called the desk and acknowledged receiving the notice. Staff confirmed that the family-related appointment on January 16 remained on the schedule and that later appointments would appear on the next weekly list. Rowan did not request a change to the remaining appointments during this call.
+
+11:35: Cancellation record closed. No group was held and no participants were seen for HG-E108. No replacement group was conducted in the January 15 slot. The telephone contact was limited to confirming the cancellation and upcoming appointment information.

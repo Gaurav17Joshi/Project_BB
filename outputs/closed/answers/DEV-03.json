@@ -1,0 +1,69 @@
+{
+ "id": "DEV-03",
+ "question": "For each week, did the delivered therapy meet the goal documented in Rowan\u2019s treatment plan? State the goal, the relevant therapy-day and minute totals, and whether it was met, not met, or cannot be determined from the current record.",
+ "answer": "## Weekly goal compliance\n\nThe signed plan sets the same goal throughout the review period: \u201cLocal treatment participation goal: at least 3 therapy days and at least 150 minutes of patient-present therapy in each Monday\u2013Sunday week.\u201d [BH-D003] Therapy days are days with individual, group, or family psychotherapy; the plan excludes medication management, collateral-only contacts, and care coordination. [BH-D003]\n\n| Week | Therapy days | Patient-present therapy minutes | Verdict |\n|---|---:|---:|---|\n| 2026-01-05 to 2026-01-11 | 3 | 140 | **Not met** \u2014 the day threshold was reached, but minutes were below goal. Contacts: HG-M042/2026-01-05/HG-E101, HG-M042/2026-01-06/HG-E102, HG-M042/2026-01-09/HG-E104. |\n| 2026-01-12 to 2026-01-18 | 2 | 120 | **Not met** \u2014 both day and minute totals were below goal. Contacts: HG-M042/2026-01-12/HG-E105, HG-M042/2026-01-14/HG-E107. |\n| 2026-01-19 to 2026-01-25 | 3 | 180 | **Met** \u2014 both thresholds were reached. Contacts: HG-M042/2026-01-19/HG-E110, HG-M042/2026-01-19/HG-E111, HG-M042/2026-01-21/HG-E112, HG-M042/2026-01-22/HG-E113. |\n| 2026-01-26 to 2026-02-01 *(partial review week through 2026-01-30)* | 3 | 145\u2013155 | **Cannot be determined** \u2014 the day threshold was reached, but the minute range straddles the 150-minute goal. Contacts: HG-M042/2026-01-26/HG-E115, HG-M042/2026-01-29/HG-E118, HG-M042/2026-01-30/HG-E119. |\n\n### Uncertainty and counting notes\n\nThe final week\u2019s duration is unresolved: the two final records for HG-M042/2026-01-26/HG-E115 disagree. [BH-D111] \u201cThe full patient-contact interval for the encounter was 09:10\u201309:50.\u201d [BH-D110] \u201cActual patient psychotherapy contact: 09:00\u201309:50, 50 minutes.\u201d The issue record says an attestation or correction from the treating clinicians is needed to settle the duration; until then, the weekly minutes remain 145\u2013155.\n\nThe January 27 group was excluded because Rowan did not attend: [BH-D108] \u201cNo show; patient did not attend.\u201d The January 28 individual appointment was also excluded: [BH-D108] \u201cPatient cancelled before appointment.\u201d Duplicate or accompanying records for a single encounter were merged rather than counted as additional therapy contacts, including HG-E104, HG-E110, and HG-E115.",
+ "tool_calls": [
+  {
+   "tool": "treatment_goals",
+   "args": {
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "goal_compliance",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "weekly_summary",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan Mercer",
+    "kinds": [
+     "all"
+    ]
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D003",
+    "quote": "Local treatment participation goal",
+    "line": 12,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "no_show",
+    "line": 0,
+    "context": 3
+   }
+  }
+ ],
+ "latency_s": 19.26,
+ "citations": {
+  "checked": 5,
+  "verified": 5,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 3,
+ "input_tokens": 15784,
+ "output_tokens": 1648,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 9295,
+ "cost_usd": 0.00157
+}

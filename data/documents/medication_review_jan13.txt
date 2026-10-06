@@ -1,0 +1,17 @@
+Document ID: BH-D010
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Prescriber visit
+Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Encounter HG-E106 | Date 2026-01-13
+Actual visit 09:00–09:25 local; completed, 25 minutes
+Clinician: Elias Brenner, NP
+Signed 2026-01-13, 10:04 local
+
+Rowan attended for medication management. The visit addressed medication use, tolerability, adherence, and symptom response relevant to the current prescription plan. Rowan reported continuing sleep interruption and daytime tiredness. They described mood as somewhat less heavy on days with a planned activity but remained concerned about work communication. The medication list was reviewed with Rowan and reconciled with the active chart.
+
+Rowan denied a new medication-related concern requiring urgent intervention. We discussed practical adherence supports, the expected follow-up process, and when to contact the prescribing office about changes in symptoms or tolerability. Rowan was attentive, asked questions about the monitoring plan, and could restate the next steps. No new physical complaint was raised during this visit.
+
+Assessment: ongoing depressive and anxiety symptoms with sleep disruption. Rowan is engaged with the therapy program and intends to continue the scheduled appointments. Medication monitoring will continue during the outpatient episode, with later follow-up arranged according to clinical response.
+
+Service documented: medication review and management only. No separate psychotherapy component was provided or documented. Rowan was directed to bring activity and communication concerns to the treating therapist for continued work.

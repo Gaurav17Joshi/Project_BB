@@ -1,0 +1,28 @@
+{
+ "id": "DEV-03",
+ "question": "For each week, did the delivered therapy meet the goal documented in Rowan\u2019s treatment plan? State the goal, the relevant therapy-day and minute totals, and whether it was met, not met, or cannot be determined from the current record.",
+ "answer": "## Rowan Mercer (HG-M042) Weekly Goal Compliance Summary\n\n**Goal documented:**  \n*Goal ID:* BH-D003:G0  \n*Document:* BH-D003  \n*Evidence:* \"Local treatment participation goal: at least 3 therapy days and at least 150 minutes of patient-present therapy in each Monday\u2013Sunday week.\"\n\n| Week | Therapy Days | Minutes | Verdict | Reason |\n|------|--------------|---------|---------|--------|\n| 2026-01-05 to 2026-01-11 | 3 | 140 | **not_met** | 140 min < 150 |\n| 2026-01-12 to 2026-01-18 | 2 | 120 | **not_met** | 2 therapy days < 3; 120 min < 150 |\n| 2026-01-19 to 2026-01-25 | 3 | 180 | **met** | Both thresholds met |\n| 2026-01-26 to 2026-02-01 (partial) | 3 | 145\u2013155 | **indeterminate** | Minutes range straddles 150; cannot determine without resolving documentation conflict (HG-M042/I007) |\n\n### Uncertainties\n- The final week (2026-01-26 to 2026-01-30, partial) has conflicting source records for the first contact: BH-D110 reports 50 minutes and BH-D111 reports 40 minutes. This creates a range of 145\u2013155 total minutes across all contacts. The verdict is **indeterminate** until this conflict is resolved.",
+ "tool_calls": [
+  {
+   "tool": "goal_compliance",
+   "args": {
+    "patient": "HG-M042",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  }
+ ],
+ "latency_s": 23.56,
+ "citations": {
+  "checked": 1,
+  "verified": 1,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 2,
+ "input_tokens": 7653,
+ "output_tokens": 1124,
+ "model": "qwen3.5:9b",
+ "cached_input_tokens": 0,
+ "cost_usd": 0.0
+}

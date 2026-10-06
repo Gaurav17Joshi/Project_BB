@@ -1,0 +1,57 @@
+{
+ "id": null,
+ "question": "Which weeks met the treatment-plan goal?",
+ "answer": "**Only the week of 2026-01-19 to 2026-01-25 met the treatment-plan goal.** The goal requires at least 3 therapy days and at least 150 minutes of patient-present therapy in each Monday\u2013Sunday week. [BH-D003] \u201cLocal treatment participation goal: at least 3 therapy days and at least 150 minutes of patient-present therapy in each Monday\u2013Sunday week. A therapy day is a calendar day on which Rowan participates in individual, group, or family psychotherapy.\u201d\n\n| Week | Therapy days | Therapy minutes | Verdict |\n|---|---:|---:|---|\n| 2026-01-05 to 2026-01-11 | 3 | 140 | Not met \u2014 minutes below threshold |\n| 2026-01-12 to 2026-01-18 | 2 | 120 | Not met \u2014 both thresholds below goal |\n| **2026-01-19 to 2026-01-25** | **3** | **180** | **Met** |\n| 2026-01-26 to 2026-02-01 | 3 | 145\u2013155 | Indeterminate \u2014 partial week in the review period, and the minutes range straddles the threshold |\n\n**Uncertainty:** The final week includes only 2026-01-26 to 2026-01-30 in the review period. For contact HG-M042/2026-01-26/HG-E115, the records conflict: [BH-D111] \u201cThe full patient-contact interval for the encounter was 09:10\u201309:50.\u201d [BH-D110] \u201cActual patient psychotherapy contact: 09:00\u201309:50, 50 minutes.\u201d The abstraction reports the week\u2019s total as **145\u2013155 minutes** and says an attestation or correction from the treating clinicians is needed to resolve it. A 2026-01-27 group was excluded because the final attendance register records: [BH-D108] \u201cNo show; patient did not attend\u201d and \u201cNo patient treatment contact occurred.\u201d",
+ "tool_calls": [
+  {
+   "tool": "treatment_goals",
+   "args": {
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "goal_compliance",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan Mercer",
+    "kinds": []
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "no_show",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "no-show",
+    "line": 0,
+    "context": 3
+   }
+  }
+ ],
+ "latency_s": 32.0,
+ "citations": {
+  "checked": 5,
+  "verified": 5,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 6,
+ "input_tokens": 23041,
+ "output_tokens": 1576,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 18141,
+ "cost_usd": 0.00146
+}

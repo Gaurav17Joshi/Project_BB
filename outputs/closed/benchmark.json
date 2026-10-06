@@ -1,0 +1,217 @@
+{
+ "model": "gpt-6-luna",
+ "answer_model": "gpt-6-luna",
+ "documents_dir": "C:\\Users\\kunal\\Joshi\\Blenduse\\Intern_work\\backbone_closed\\data\\documents",
+ "cold_process": {
+  "files_seen": 31,
+  "new_documents": 31,
+  "duplicate_copies": [],
+  "extracted": 31,
+  "failed": [],
+  "input_tokens": 76282,
+  "cached_input_tokens": 76189,
+  "output_tokens": 30180,
+  "cost_usd": 0.01586,
+  "patients_rebuilt": [
+   "HG-M042"
+  ],
+  "seconds": {
+   "ingest": 0.035,
+   "extract": 39.344,
+   "load_and_reconcile": 0.496,
+   "total": 39.874
+  },
+  "model": "gpt-6-luna",
+  "prompt_version": "extract-v1",
+  "wall_s": 39.88
+ },
+ "warm_process": {
+  "files_seen": 31,
+  "new_documents": 0,
+  "duplicate_copies": [],
+  "extracted": 0,
+  "failed": [],
+  "input_tokens": 0,
+  "cached_input_tokens": 0,
+  "output_tokens": 0,
+  "cost_usd": 0.0,
+  "patients_rebuilt": [],
+  "seconds": {
+   "ingest": 0.036,
+   "extract": 0.0,
+   "load_and_reconcile": 0.0,
+   "total": 0.036
+  },
+  "model": "gpt-6-luna",
+  "prompt_version": "extract-v1",
+  "wall_s": 0.051
+ },
+ "duplicate_test": {
+  "added_files": 2,
+  "new_documents": 0,
+  "llm_calls": 0,
+  "duplicates_detected": [
+   [
+    "COPY_BH-D101_group_content_2026-01-19.txt",
+    "3a71afa112bada24b4348f0999533af79ad90542a424765e88c6e69c0504dfbe"
+   ],
+   [
+    "RESCAN_BH-D102_original_attendance_2026-01-19.txt",
+    "42c15f51ad18aca706f5f745c68cc36a11440ab88fc1f46df93adb08d31178e0"
+   ]
+  ],
+  "wall_s": 0.02,
+  "contacts_unchanged": true
+ },
+ "query_latency_ms_median_of_20": {
+  "session_counts": 4.34,
+  "weekly_summary": 3.15,
+  "goal_compliance": 4.62,
+  "day_detail": 0.88,
+  "consecutive_weeks_below (collection)": 3.76,
+  "compliance_all (collection)": 3.96
+ },
+ "restart_load_and_query_s": 0.17,
+ "restart_query_output": "585",
+ "questions": [
+  {
+   "id": "DEV-01",
+   "scope": "patient",
+   "latency_s": 92.66,
+   "llm_calls": 14,
+   "input_tokens": 153014,
+   "output_tokens": 7732,
+   "cached_input_tokens": 124404,
+   "cost_usd": 0.00797,
+   "citations": {
+    "checked": 9,
+    "verified": 9,
+    "repaired_after_first_pass": 1
+   }
+  },
+  {
+   "id": "DEV-02",
+   "scope": "patient",
+   "latency_s": 86.26,
+   "llm_calls": 11,
+   "input_tokens": 164250,
+   "output_tokens": 7662,
+   "cached_input_tokens": 141212,
+   "cost_usd": 0.00755,
+   "citations": {
+    "checked": 26,
+    "verified": 26,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "DEV-03",
+   "scope": "patient",
+   "latency_s": 19.26,
+   "llm_calls": 3,
+   "input_tokens": 15784,
+   "output_tokens": 1648,
+   "cached_input_tokens": 9295,
+   "cost_usd": 0.00157,
+   "citations": {
+    "checked": 5,
+    "verified": 5,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "DEV-04",
+   "scope": "patient",
+   "latency_s": 21.39,
+   "llm_calls": 4,
+   "input_tokens": 32841,
+   "output_tokens": 1824,
+   "cached_input_tokens": 22432,
+   "cost_usd": 0.00218,
+   "citations": {
+    "checked": 5,
+    "verified": 5,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "DEV-05",
+   "scope": "patient",
+   "latency_s": 30.28,
+   "llm_calls": 3,
+   "input_tokens": 38143,
+   "output_tokens": 2946,
+   "cached_input_tokens": 19834,
+   "cost_usd": 0.0035,
+   "citations": {
+    "checked": 22,
+    "verified": 22,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "NEW-01",
+   "scope": "patient",
+   "latency_s": 27.99,
+   "llm_calls": 7,
+   "input_tokens": 34137,
+   "output_tokens": 1892,
+   "cached_input_tokens": 26900,
+   "cost_usd": 0.00194,
+   "citations": {
+    "checked": 4,
+    "verified": 4,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "NEW-02",
+   "scope": "collection",
+   "latency_s": 35.05,
+   "llm_calls": 9,
+   "input_tokens": 30871,
+   "output_tokens": 2514,
+   "cached_input_tokens": 20214,
+   "cost_usd": 0.00252,
+   "citations": {
+    "checked": 2,
+    "verified": 2,
+    "repaired_after_first_pass": 1
+   }
+  },
+  {
+   "id": "NEW-03",
+   "scope": "collection",
+   "latency_s": 13.9,
+   "llm_calls": 3,
+   "input_tokens": 5097,
+   "output_tokens": 995,
+   "cached_input_tokens": 4276,
+   "cost_usd": 0.00062,
+   "citations": {
+    "checked": 1,
+    "verified": 1,
+    "repaired_after_first_pass": 0
+   }
+  }
+ ],
+ "sizes_bytes": {
+  "source_documents": 50106,
+  "sqlite_db": 487424,
+  "abstraction_json": 172352
+ },
+ "tokens_total": {
+  "input": 550419,
+  "output": 57393
+ },
+ "cost_usd": {
+  "extraction_billed": 0.01586,
+  "extraction_uncached": 0.02272,
+  "questions_billed": 0.02785,
+  "prices_per_1M": {
+   "input": 0.1,
+   "cached_input": 0.01,
+   "output": 0.5
+  }
+ }
+}

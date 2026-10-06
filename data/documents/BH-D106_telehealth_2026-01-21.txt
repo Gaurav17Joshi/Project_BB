@@ -1,0 +1,20 @@
+Document ID: BH-D106
+HARBOR GROVE BEHAVIORAL HEALTH
+Individual psychotherapy | Encounter HG-E112 | Appointment HG-A112
+Rowan Mercer | DOB: 1991-04-12 | MRN: HG-M042
+January 21, 2026 | Video | Clinician: Mira Patel, LCSW
+
+Patient contact occurred 13:00–13:20 and 13:30–13:55. Connection was lost from 13:20–13:30; there was no therapeutic contact during that interval. Total patient psychotherapy contact: 45 minutes. The reconnection continued the same clinical encounter under original appointment HG-A112.
+
+Rowan reported drafting a short message about a possible gradual return to work but stopping before sending it. Explored the difference between uncertainty about the supervisor's response and evidence that a response would be negative. The patient identified checking the draft repeatedly as another way the task was being delayed. Practiced reading the draft once and choosing a planned time to send it.
+
+After the connection resumed, the discussion returned to the same task and to evening routines. Rowan described one night of improved sleep followed by a night of prolonged wakefulness. Discussed keeping the wind-down routine brief and repeatable. Rowan was engaged and able to restate the agreed task. No urgent safety concern was reported. Follow-up remains with the established outpatient team.
+
+Electronically signed: Mira Patel, LCSW | January 21, 2026, 15:04
+
+ATTACHED PLATFORM CONNECTION EXPORT
+Appointment ID | Call ID | Connected | Ended
+HG-A112 | VC-112A | January 21 13:00 | January 21 13:20
+HG-A112 | VC-112B | January 21 13:30 | January 21 13:55
+Second call reason: Rejoin original appointment after network disconnect.
+Exported January 21, 2026, 14:06; all times local.

@@ -1,0 +1,17 @@
+Document ID: BH-D005
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Group desk attendance extract
+Patient: Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Extract prepared 2026-01-12, 15:10 local by N. Ellis
+All times local. Patient entries shown below; other member rows omitted.
+
+Date       | Encounter | Scheduled slot | Patient arrived | Patient departed | Desk status
+2026-01-06 | HG-E102   | 10:00–11:30    | 10:15           | 11:15            | Attended part
+2026-01-12 | HG-E105   | 10:00–11:30    | 10:00           | 11:30            | Attended full
+
+January 6 desk note: Rowan called from the building entrance to say they were running behind after difficulty finding parking. Reception directed them to the group room after check-in. Rowan advised the facilitator that they would need to leave early for a previously arranged ride. Departure was marked when Rowan returned their visitor badge. Rowan did not re-enter the group room after departing.
+
+January 12 desk note: Rowan checked in before the group began and remained until the group was released. Their next printed appointment list was provided at checkout. No transport concern was reported at that time.
+
+The desk records arrival and departure when members enter or leave the scheduled group. Session activities and room breaks are documented in the facilitator's record. Prepared from the signed reception attendance sheet for the two dates listed.

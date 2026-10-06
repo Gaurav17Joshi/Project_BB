@@ -1,0 +1,48 @@
+{
+ "id": "NEW-03",
+ "question": "How did the types and amounts of care delivered change before and after a treatment-plan change, for each patient?",
+ "answer": "The record for Rowan Mercer (HG-M042) does not document a treatment-plan change. The tool response explicitly states: \u201cOnly one treatment-plan goal version is documented, so there is no plan change to compare around. Report that no change is documented; do not treat the initial plan as a change.\u201d Therefore, there is no before/after comparison of care types and amounts to report for a plan change.\n\nHowever, if you would like a before/after split at an arbitrary date (e.g., 2026-01-15) despite the absence of a documented plan change, I can provide that using `weekly_summary` or `contacts`. Please confirm whether you want:\n- A report stating no treatment-plan change is documented (current answer), or  \n- A before/after split at a specific date for this patient\u2019s care delivery.",
+ "tool_calls": [
+  {
+   "tool": "plan_change_comparison",
+   "args": {
+    "patient": "HG-M042",
+    "change_date": "2026-01-15"
+   }
+  },
+  {
+   "tool": "list_patients",
+   "args": {}
+  },
+  {
+   "tool": "list_patients",
+   "args": {}
+  },
+  {
+   "tool": "plan_change_comparison",
+   "args": {
+    "patient": "HG-M042"
+   }
+  }
+ ],
+ "latency_s": 55.22,
+ "citations": {
+  "checked": 1,
+  "verified": 0,
+  "repaired_after_first_pass": 1,
+  "unverified": [
+   {
+    "quote": "Only one treatment-plan goal version is documented, so there is no plan change to compare around. Report that no change is documented; do not treat the initial plan as a change.",
+    "cited": [],
+    "verified": false,
+    "found_in": null
+   }
+  ]
+ },
+ "llm_calls": 6,
+ "input_tokens": 16361,
+ "output_tokens": 2762,
+ "model": "qwen3.5:9b",
+ "cached_input_tokens": 0,
+ "cost_usd": 0.0
+}

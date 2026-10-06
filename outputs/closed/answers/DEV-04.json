@@ -1,0 +1,142 @@
+{
+ "id": "DEV-04",
+ "question": "Reconstruct the care on January 19 and January 21. How many therapy contacts and patient therapy minutes occurred on each date, and how do the attendance records, clinical notes, later documents, and telehealth records affect your answer?",
+ "answer": "## Reconstructed care\n\n| Date | Therapy contacts | Patient therapy minutes | Reconciled care |\n|---|---:|---:|---|\n| **January 19, 2026** | **2** | **90 minutes** | Group psychotherapy, contact **HG-M042/2026-01-19/HG-E110**: **60 minutes**; then individual psychotherapy, contact **HG-M042/2026-01-19/HG-E111**: **30 minutes**. |\n| **January 21, 2026** | **1** | **45 minutes** | Video individual psychotherapy, contact **HG-M042/2026-01-21/HG-E112**. |\n\n### How the records affect the count\n\n- **January 19 group:** The signed attendance roster records attendance, but its original departure time was corrected. The correction states, [BH-D103] \u201cPatient departure for HG-E110 is 11:15, replacing the original roster value of 11:30. Patient arrival remains 10:00.\u201d The clinical record documents the nontherapeutic break, [BH-D101] \u201cNontherapeutic break: 10:45\u201311:00,\u201d and says there was no patient treatment during it. The reconciled group contact is therefore **60 therapy minutes**, as recorded in the abstraction.\n- **January 19 individual:** The signed note records a separate, completed patient contact: [BH-D105] \u201cPatient contact: 11:15\u201311:45 | Completed: 30 minutes.\u201d It describes the visit as added after Rowan became anxious during group. This is a separate therapy contact, not part of the group duration.\n- **Later January 19 roster copy:** A later-received roster repeats the original **11:30** departure, but it is not a new visit or a replacement correction. It states, [BH-D104] \u201cThis is a retransmission of the January 19 roster for HG-E110. The received copy contains no new clinician signature and records no additional visit.\u201d The abstraction merges it with the original record and applies the correction.\n- **January 21 telehealth:** The signed video note reports two patient-contact intervals and a disconnection, but identifies them as one encounter: [BH-D106] \u201cConnection was lost from 13:20\u201313:30; there was no therapeutic contact during that interval. Total patient psychotherapy contact: 45 minutes. The reconnection continued the same clinical encounter under original appointment HG-A112.\u201d Thus the interruption does not add a contact or patient therapy minutes.\n\n**Bottom line:** The reconciled records establish **2 therapy contacts and 90 patient therapy minutes on January 19**, and **1 therapy contact and 45 patient therapy minutes on January 21**.",
+ "tool_calls": [
+  {
+   "tool": "list_patients",
+   "args": {}
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "Rowan Mercer",
+    "date": "2026-01-19"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "Rowan Mercer",
+    "date": "2026-01-21"
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan Mercer",
+    "kinds": []
+   }
+  },
+  {
+   "tool": "contacts",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-19",
+    "end": "2026-01-21",
+    "service_types": [],
+    "inclusion": [
+     "included",
+     "excluded",
+     "uncertain"
+    ]
+   }
+  },
+  {
+   "tool": "document_index",
+   "args": {
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D101",
+    "quote": "Rowan initially followed the exercise",
+    "line": 10,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D102",
+    "quote": "Patient arrival: 10:00",
+    "line": 12,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D103",
+    "quote": "Patient departure for HG-E110 is 11:15",
+    "line": 7,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D104",
+    "quote": "Patient arrival: 10:00",
+    "line": 14,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D105",
+    "quote": "Patient contact: 11:15",
+    "line": 6,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D106",
+    "quote": "The reconnection continued the same clinical encounter",
+    "line": 7,
+    "context": 7
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 19",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "connection was lost",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D104",
+    "quote": "This is a retransmission of the January 19 roster",
+    "line": 20,
+    "context": 4
+   }
+  }
+ ],
+ "latency_s": 21.39,
+ "citations": {
+  "checked": 5,
+  "verified": 5,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 4,
+ "input_tokens": 32841,
+ "output_tokens": 1824,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 22432,
+ "cost_usd": 0.00218
+}

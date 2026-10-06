@@ -1,0 +1,138 @@
+{
+ "id": "DEV-05",
+ "question": "Summarize the documented symptom course during the episode and the reason for the additional individual contact on January 19. Which symptom assessments are distinct, and what conclusions about progress can and cannot be supported?",
+ "answer": "## Documented symptom course\n\nAt intake, Rowan reported several weeks of low mood, reduced interest, fragmented sleep, difficulty starting ordinary tasks, and avoidance around work communication and return-to-work discussions. The clinician also noted subdued but responsive affect and no immediate safety concern. [BH-D002] \u201cRowan describes several weeks of low mood, reduced interest in usual activities, fragmented sleep, and difficulty beginning ordinary tasks.\u201d [BH-D002] \u201cNo immediate safety concern was identified in today's assessment; Rowan was able to discuss support contacts and ways to seek additional help if needed.\u201d\n\nDuring the episode, the record documents **some improvement, but ongoing symptoms and functional difficulty**:\n\n- Rowan described mood as somewhat less heavy on days with a planned activity, while sleep interruption, daytime tiredness, and concern about work communication continued. [BH-D010] \u201cThey described mood as somewhat less heavy on days with a planned activity but remained concerned about work communication.\u201d [BH-D010] \u201cRowan reported continuing sleep interruption and daytime tiredness.\u201d\n- Rowan reported small activity steps\u2014such as walks and opening a work message\u2014but had not replied; sleep remained interrupted and starting the morning still took effort. The clinician noted more varied affect than at intake, with worry still evident around employment. [BH-D011] \u201cRowan reported completing several small activities since the prior individual appointment, including opening a work message and taking two short walks.\u201d [BH-D011] \u201cThey have not yet replied to the message and continue to imagine being asked questions they cannot answer.\u201d [BH-D011] \u201cAffect was more varied than at intake, although worry was evident when discussing employment.\u201d\n- On January 19, discussion of returning to the workplace triggered visible tension and Rowan said the discussion felt difficult to manage. The individual clinician documented feeling overwhelmed by workplace demands and worry about keeping up if returning. [BH-D101] \u201cWhen discussion turned to returning to the workplace, Rowan became visibly tense and said the amount of discussion felt difficult to manage.\u201d [BH-D105] \u201cThe patient described feeling overwhelmed when other members discussed workplace demands and worried that returning to work would expose difficulties keeping up.\u201d\n- Later, Rowan drafted a work message, then sent a short message to the supervisor, but continued to delay follow-up and felt anxious when the task expanded. By the end of the episode, Rowan described mood as less persistently low than earlier in the month, while anxiety about work and variable sleep remained. [BH-D115] \u201cThe patient has taken some initial steps, including drafting and sending a message, but continues to delay follow-up and becomes anxious when a task expands beyond a narrowly defined action.\u201d [BH-D114] \u201cMood felt less persistently low than earlier in the month, although anxiety remained noticeable when anticipating contact with work.\u201d [BH-D114] \u201cSleep was still variable.\u201d\n\n## January 19 additional individual contact\n\nThe additional contact was **attended individual psychotherapy**, contact **HG-M042/2026-01-19/HG-E111**, documented as 11:15\u201311:45 and 30 minutes. It followed Rowan\u2019s distress during group; the clinician used grounding and reviewed coping strategies. [BH-D105] \u201cThis visit was added because Rowan became anxious during group and needed individual grounding and review of coping strategies.\u201d [BH-D105] \u201cUsed paced breathing, orientation to the room, and a brief review of the patient's coping card.\u201d Rowan reported that the immediate anxiety eased enough to discuss a next step, and the clinician narrowed the work task to drafting two sentences without requiring that the message be sent that day. [BH-D105] \u201cRowan participated throughout the individual contact and reported that the immediate intensity of anxiety eased enough to discuss a next step.\u201d\n\nThe group and individual services are separate documented contacts: group **HG-M042/2026-01-19/HG-E110** and individual **HG-M042/2026-01-19/HG-E111**. The group attendance correction and retransmitted roster copy concern the group record; the copy was merged rather than counted as another contact. The individual contact has its own signed note documenting its attendance and purpose.\n\n## Distinct symptom assessments and what they support\n\nThe standardized-measure record contains distinct **PHQ-9** administrations:\n\n| Completion date | Result | Record interpretation |\n|---|---:|---|\n| 2026-01-05 | 18 | Intake score. [BH-D002] \u201cPHQ-9 completed by Rowan on 2026-01-05: total score 18.\u201d |\n| 2026-01-16 | 14 | One administration, not two: the original portal form and its imported copy share source form HG-Q116. [BH-D014] \u201cPHQ-9   \\| 14     \\| 2026-01-16     \\| HG-Q116\u201d |\n| 2026-01-30 | 10; Item 9: 0 | [BH-D115] \u201cPHQ-9 total: 10. Item 9: 0.\u201d |\n\nThe January 16 import is explicitly identified as a copy of the same administration, so it should not be treated as a separate assessment. [BH-D014] \u201cOriginal clinician review timestamp: January 16, 2026, 09:10 local.\u201d The clinician\u2019s review of that score and recent session material suggested some improvement in depressive symptoms, while noting persistent avoidance, difficulty initiating work communication, and sleep disruption. [BH-D013] \u201cClinician review: the score and recent individual-session material suggest some improvement in depressive symptoms.\u201d\n\n**Supported conclusion:** the PHQ-9 scores and narrative assessments support a course of partial improvement in depressive symptoms. The end-of-episode clinician assessment likewise described partial improvement, alongside persistent avoidance and meaningful work-related functional impact. [BH-D115] \u201cRowan shows partial improvement, with persistent avoidance and meaningful functional impact around returning to work.\u201d\n\n**Not supported:** the record does not establish resolution of anxiety, sleep difficulty, avoidance, or work-related impairment; nor does the PHQ-9 series alone establish recovery or that treatment caused the score changes. The January 30 review still describes sleep difficulty and trouble sustaining usual activities. [BH-D115] \u201cThe patient continued to endorse sleep difficulty and trouble sustaining usual activities, with fewer days of pervasive low mood than reported at intake.\u201d The measure abstraction contains PHQ-9 results; it does not provide a distinct standardized anxiety measure.",
+ "tool_calls": [
+  {
+   "tool": "observations",
+   "args": {
+    "patient": "Rowan Mercer",
+    "domains": [
+     "mood",
+     "anxiety",
+     "sleep",
+     "functioning_activity",
+     "avoidance",
+     "work_return",
+     "engagement",
+     "safety",
+     "family_support",
+     "overall_progress",
+     "other"
+    ],
+    "start": "2026-01-05",
+    "end": "2026-01-30",
+    "observer_types": [
+     "clinician",
+     "patient_self_report",
+     "collateral_informant",
+     "administrative"
+    ]
+   }
+  },
+  {
+   "tool": "measures",
+   "args": {
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan Mercer",
+    "kinds": [
+     "all"
+    ]
+   }
+  },
+  {
+   "tool": "document_index",
+   "args": {
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "Rowan Mercer",
+    "date": "2026-01-19"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D002",
+    "quote": "PHQ-9 completed by Rowan",
+    "line": 15,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D013",
+    "quote": "some improvement in depressive symptoms",
+    "line": 13,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D014",
+    "quote": "PHQ-9   | 14",
+    "line": 13,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D101",
+    "quote": "When discussion turned to returning",
+    "line": 10,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D105",
+    "quote": "The patient described feeling overwhelmed",
+    "line": 9,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D115",
+    "quote": "PHQ-9 total: 10",
+    "line": 6,
+    "context": 6
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D114",
+    "quote": "Mood felt less persistently low",
+    "line": 8,
+    "context": 4
+   }
+  }
+ ],
+ "latency_s": 30.28,
+ "citations": {
+  "checked": 22,
+  "verified": 22,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 3,
+ "input_tokens": 38143,
+ "output_tokens": 2946,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 19834,
+ "cost_usd": 0.0035
+}

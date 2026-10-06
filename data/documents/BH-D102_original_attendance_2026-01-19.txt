@@ -1,0 +1,19 @@
+Document ID: BH-D102
+HARBOR GROVE BEHAVIORAL HEALTH
+Patient-specific attendance roster extract
+Service date: January 19, 2026 | Group encounter: HG-E110
+Patient: Rowan Mercer | DOB: 1991-04-12 | MRN: HG-M042
+Location: Outpatient skills room B
+
+Scheduled opening: 10:00 | Scheduled closing: 11:30
+Patient arrival: 10:00 | Patient departure: 11:30 | Status: Attended
+Roster disposition: Final, signed
+
+This is the patient row from the facilitator's attendance sheet. Arrival and departure fields were entered at roster close. The room schedule appears above to identify the group and is retained with the attendance sheet. Group topics, exercises, and the scheduled break are recorded in the separate group clinical record.
+
+Rowan was present for the opening check-in. The patient identified anxiety about reconnecting with work and accepted an exercise handout. Staff arranged access to the individual clinician after Rowan requested additional help. No transportation assistance was requested. The patient retained the same outpatient chart identifier throughout the day's services.
+
+Administrative routing: scanned to the patient chart and sent to the clinical records queue. This roster is the original signed attendance entry for the listed service date. The staff member closing the roster certified the patient row as shown at the time of signing.
+
+Electronically signed: Leah Chen, LCSW | January 19, 2026, 12:14
+Document status: Final

@@ -1,0 +1,34 @@
+{
+ "id": "DEV-04",
+ "question": "Reconstruct the care on January 19 and January 21. How many therapy contacts and patient therapy minutes occurred on each date, and how do the attendance records, clinical notes, later documents, and telehealth records affect your answer?",
+ "answer": "## Reconstructed Care for Rowan Mercer (HG-M042)\n\n### January 19, 2026\n\n| Metric | Value |\n|--------|-------|\n| Therapy contacts | 2 |\n| Patient therapy minutes | 90 (lo=90, hi=90) |\n\n**Contacts:**\n- **HG-E110**: group_psychotherapy, in_person, 60 minutes (10:00\u201310:45, 11:00\u201311:15)\n- **HG-E111**: individual_psychotherapy, in_person, 30 minutes (11:15\u201311:45)\n\n**How records affect the answer:**\n- **Attendance records (tier A)**: BH-D101 and BH-D102 both state patient was present. BH-D101 shows partial attendance with two intervals; BH-D102 shows full attendance 10:00\u201311:30 but includes a nontherapeutic break 10:45\u201311:00.\n- **Administrative copies (tier B)**: BH-D103 corrects the departure time from 11:30 to 11:15; BH-D104 retains original disposition. These are merged duplicates (issue HG-M042/I005) and do not add additional contacts.\n- **Clinical notes**: BH-D101 describes group content about cognitive-behavioral sequence; BH-D105 documents the individual visit added due to anxiety during group.\n- **Telehealth records**: None on this date (both in_person).\n\n---\n\n### January 21, 2026\n\n| Metric | Value |\n|--------|-------|\n| Therapy contacts | 1 |\n| Patient therapy minutes | 45 (lo=45, hi=45) |\n\n**Contacts:**\n- **HG-E112**: individual_psychotherapy, video modality, 45 minutes (13:00\u201313:20, 13:30\u201313:55)\n\n**How records affect the answer:**\n- **Attendance record (tier A)**: BH-D106 shows partial attendance with two intervals and a connection loss from 13:20\u201313:30. The break is explicitly documented as \"no therapeutic contact during that interval.\"\n- **Clinical notes**: BH-D106 documents the telehealth session content, including discussion of work return task and sleep patterns.\n- **Telehealth records**: This was a video modality contact; the connection loss (13:20\u201313:30) is accounted for in the minutes calculation.\n\n---\n\n### Summary Table\n\n| Date | Contacts | Minutes (lo=hi) | Modality | Notes |\n|------|----------|------------------|----------|-------|\n| 2026-01-19 | 2 | 90 | in_person (group + individual) | Administrative corrections merged; no telehealth |\n| 2026-01-21 | 1 | 45 | video | Connection loss accounted for; no additional contacts |\n\n**Uncertainties:** None. All discrepancies were resolved through administrative corrections and tier-A source validation. The duplicate_copy issue (HG-M042/I005) was merged and does not affect the contact count or minutes.",
+ "tool_calls": [
+  {
+   "tool": "day_detail",
+   "args": {
+    "date": "2026-01-19",
+    "patient": "HG-M042"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "date": "2026-01-21",
+    "patient": "HG-M042"
+   }
+  }
+ ],
+ "latency_s": 29.91,
+ "citations": {
+  "checked": 1,
+  "verified": 1,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 2,
+ "input_tokens": 8579,
+ "output_tokens": 1483,
+ "model": "qwen3.5:9b",
+ "cached_input_tokens": 0,
+ "cost_usd": 0.0
+}

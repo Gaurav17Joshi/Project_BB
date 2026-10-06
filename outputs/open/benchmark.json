@@ -1,0 +1,217 @@
+{
+ "model": "qwen3.5:9b",
+ "answer_model": "qwen3.5:9b",
+ "documents_dir": "C:\\Users\\kunal\\Joshi\\Blenduse\\Intern_work\\backbone_open\\data\\documents",
+ "cold_process": {
+  "files_seen": 31,
+  "new_documents": 31,
+  "duplicate_copies": [],
+  "extracted": 31,
+  "failed": [],
+  "input_tokens": 39407,
+  "cached_input_tokens": 0,
+  "output_tokens": 45166,
+  "cost_usd": 0.0,
+  "patients_rebuilt": [
+   "HG-M042"
+  ],
+  "seconds": {
+   "ingest": 0.036,
+   "extract": 1355.955,
+   "load_and_reconcile": 0.941,
+   "total": 1356.933
+  },
+  "model": "qwen3.5:9b",
+  "prompt_version": "extract-v2-local",
+  "wall_s": 1356.94
+ },
+ "warm_process": {
+  "files_seen": 31,
+  "new_documents": 0,
+  "duplicate_copies": [],
+  "extracted": 0,
+  "failed": [],
+  "input_tokens": 0,
+  "cached_input_tokens": 0,
+  "output_tokens": 0,
+  "cost_usd": 0.0,
+  "patients_rebuilt": [],
+  "seconds": {
+   "ingest": 0.034,
+   "extract": 0.0,
+   "load_and_reconcile": 0.0,
+   "total": 0.035
+  },
+  "model": "qwen3.5:9b",
+  "prompt_version": "extract-v2-local",
+  "wall_s": 0.045
+ },
+ "duplicate_test": {
+  "added_files": 2,
+  "new_documents": 0,
+  "llm_calls": 0,
+  "duplicates_detected": [
+   [
+    "COPY_BH-D101_group_content_2026-01-19.txt",
+    "3a71afa112bada24b4348f0999533af79ad90542a424765e88c6e69c0504dfbe"
+   ],
+   [
+    "RESCAN_BH-D102_original_attendance_2026-01-19.txt",
+    "42c15f51ad18aca706f5f745c68cc36a11440ab88fc1f46df93adb08d31178e0"
+   ]
+  ],
+  "wall_s": 0.02,
+  "contacts_unchanged": true
+ },
+ "query_latency_ms_median_of_20": {
+  "session_counts": 2.91,
+  "weekly_summary": 2.88,
+  "goal_compliance": 3.63,
+  "day_detail": 0.77,
+  "consecutive_weeks_below (collection)": 3.37,
+  "compliance_all (collection)": 3.52
+ },
+ "restart_load_and_query_s": 0.19,
+ "restart_query_output": "585",
+ "questions": [
+  {
+   "id": "DEV-01",
+   "scope": "patient",
+   "latency_s": 96.67,
+   "llm_calls": 4,
+   "input_tokens": 24669,
+   "output_tokens": 4469,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 4,
+    "verified": 1,
+    "repaired_after_first_pass": 1
+   }
+  },
+  {
+   "id": "DEV-02",
+   "scope": "patient",
+   "latency_s": 168.96,
+   "llm_calls": 5,
+   "input_tokens": 32905,
+   "output_tokens": 8593,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 2,
+    "verified": 2,
+    "repaired_after_first_pass": 2
+   }
+  },
+  {
+   "id": "DEV-03",
+   "scope": "patient",
+   "latency_s": 23.56,
+   "llm_calls": 2,
+   "input_tokens": 7653,
+   "output_tokens": 1124,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 1,
+    "verified": 1,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "DEV-04",
+   "scope": "patient",
+   "latency_s": 29.91,
+   "llm_calls": 2,
+   "input_tokens": 8579,
+   "output_tokens": 1483,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 1,
+    "verified": 1,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "DEV-05",
+   "scope": "patient",
+   "latency_s": 276.99,
+   "llm_calls": 4,
+   "input_tokens": 36731,
+   "output_tokens": 13248,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 35,
+    "verified": 35,
+    "repaired_after_first_pass": 11
+   }
+  },
+  {
+   "id": "NEW-01",
+   "scope": "patient",
+   "latency_s": 20.06,
+   "llm_calls": 3,
+   "input_tokens": 8141,
+   "output_tokens": 972,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 0,
+    "verified": 0,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "NEW-02",
+   "scope": "collection",
+   "latency_s": 33.77,
+   "llm_calls": 4,
+   "input_tokens": 10811,
+   "output_tokens": 1666,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 3,
+    "verified": 0,
+    "repaired_after_first_pass": 0
+   }
+  },
+  {
+   "id": "NEW-03",
+   "scope": "collection",
+   "latency_s": 55.22,
+   "llm_calls": 6,
+   "input_tokens": 16361,
+   "output_tokens": 2762,
+   "cached_input_tokens": 0,
+   "cost_usd": 0.0,
+   "citations": {
+    "checked": 1,
+    "verified": 0,
+    "repaired_after_first_pass": 1
+   }
+  }
+ ],
+ "sizes_bytes": {
+  "source_documents": 50106,
+  "sqlite_db": 573440,
+  "abstraction_json": 248007
+ },
+ "tokens_total": {
+  "input": 185257,
+  "output": 79483
+ },
+ "cost_usd": {
+  "extraction_billed": 0.0,
+  "extraction_uncached": 0.0,
+  "questions_billed": 0.0,
+  "prices_per_1M": {
+   "input": 0.0,
+   "cached_input": 0.0,
+   "output": 0.0
+  }
+ }
+}

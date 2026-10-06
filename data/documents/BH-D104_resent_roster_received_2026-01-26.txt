@@ -1,0 +1,20 @@
+Document ID: BH-D104
+HARBOR GROVE BEHAVIORAL HEALTH
+Records inbox cover sheet
+Received: January 26, 2026, 16:22 | Sender: Outpatient group records queue
+Subject: January 19 attendance copy
+Patient: Rowan Mercer | DOB: 1991-04-12 | MRN: HG-M042
+
+The attached attendance sheet was resent following a request for the original group roster. The transmitted packet contains the cover sheet and the original patient-specific roster extract. No correction sheet was included in this transmission. Intake staff indexed the received copy under the service date printed on the roster. The receipt date is the inbox processing date.
+
+ATTACHED ROSTER COPY
+Service date: January 19, 2026 | Group encounter: HG-E110
+Location: Outpatient skills room B
+Scheduled opening: 10:00 | Scheduled closing: 11:30
+Patient arrival: 10:00 | Patient departure: 11:30 | Status: Attended
+Original signature: Leah Chen, LCSW | January 19, 2026, 12:14
+Original disposition: Final, signed
+
+Attachment remarks retained from original: Rowan attended the opening check-in, accepted the exercise handout, and requested additional help from the individual clinician. Group content is recorded separately.
+
+Records intake: indexed by Ana Reed, records assistant, January 26, 2026, 16:31. This is a retransmission of the January 19 roster for HG-E110. The received copy contains no new clinician signature and records no additional visit.

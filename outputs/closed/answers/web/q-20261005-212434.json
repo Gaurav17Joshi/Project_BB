@@ -1,0 +1,176 @@
+{
+ "id": null,
+ "question": "Which weeks met the treatment-plan goal?",
+ "answer": "**Only the week of 2026-01-19 to 2026-01-25 met the treatment-plan goal.**\n\nThe goal required \u201cat least 3 therapy days and at least 150 minutes of patient-present therapy in each Monday\u2013Sunday week.\u201d [BH-D003] \u201cLocal treatment participation goal: at least 3 therapy days and at least 150 minutes of patient-present therapy in each Monday\u2013Sunday week.\u201d\n\n| Monday\u2013Sunday week | Therapy days | Patient-present therapy minutes | Result |\n|---|---:|---:|---|\n| 2026-01-05 to 2026-01-11 | 3 | 140 | Not met |\n| 2026-01-12 to 2026-01-18 | 2 | 120 | Not met |\n| **2026-01-19 to 2026-01-25** | **3** | **180** | **Met** |\n| 2026-01-26 to 2026-02-01 *(reviewed through 2026-01-30 only)* | 3 | 145\u2013155 | Indeterminate |\n\nFor the met week, the included contacts were HG-E110, HG-E111, HG-E112, and HG-E113. The corrected attendance for HG-E110 states: [BH-D103] \u201cCorrection: Patient departure for HG-E110 is 11:15, replacing the original roster value of 11:30. Patient arrival remains 10:00.\u201d The individual records support the other contacts: [BH-D105] \u201cPatient contact: 11:15\u201311:45 | Completed: 30 minutes\u201d and [BH-D106] \u201cTotal patient psychotherapy contact: 45 minutes.\u201d\n\n**Uncertainty:** The final reviewed week is not classifiable as met or not met because its documented minutes range, 145\u2013155, straddles the 150-minute threshold. For contact HG-E115, one record says [BH-D111] \u201cThe full patient-contact interval for the encounter was 09:10\u201309:50.\u201d while another says [BH-D110] \u201cActual patient psychotherapy contact: 09:00\u201309:50, 50 minutes.\u201d The abstraction reports that a treating-clinician attestation or correction is needed to resolve this conflict. The January 27 group was excluded as a no-show: [BH-D108] \u201cJanuary 27 | HG-E116 | Skills group | 10:00\u201311:30 | \u2014 | \u2014 | No show; patient did not attend\u201d.",
+ "tool_calls": [
+  {
+   "tool": "treatment_goals",
+   "args": {
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "goal_compliance",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D003",
+    "quote": "Local treatment participation goal",
+    "line": 12,
+    "context": 1
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan Mercer",
+    "kinds": []
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D111",
+    "quote": "",
+    "line": 1,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D110",
+    "quote": "",
+    "line": 1,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D102",
+    "quote": "",
+    "line": 1,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D103",
+    "quote": "",
+    "line": 1,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D102",
+    "quote": "",
+    "line": 10,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D103",
+    "quote": "",
+    "line": 8,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D105",
+    "quote": "",
+    "line": 12,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D106",
+    "quote": "",
+    "line": 12,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "",
+    "line": 12,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D105",
+    "quote": "",
+    "line": 4,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D106",
+    "quote": "",
+    "line": 4,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D107",
+    "quote": "",
+    "line": 4,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "",
+    "line": 4,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D102",
+    "quote": "",
+    "line": 8,
+    "context": 4
+   }
+  }
+ ],
+ "latency_s": 60.83,
+ "citations": {
+  "checked": 8,
+  "verified": 8,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 6,
+ "input_tokens": 29375,
+ "output_tokens": 2017,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 20182,
+ "cost_usd": 0.00213
+}

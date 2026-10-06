@@ -1,0 +1,16 @@
+Document ID: BH-D103
+HARBOR GROVE BEHAVIORAL HEALTH
+Attendance correction | Entered January 20, 2026
+Patient: Rowan Mercer | DOB: 1991-04-12 | MRN: HG-M042
+Applies to group encounter HG-E110, service date January 19, 2026
+
+Correction: Patient departure for HG-E110 is 11:15, replacing the original roster value of 11:30. Patient arrival remains 10:00.
+
+During review of the same-day transfer, the original group roster was found to retain the scheduled group closing time in Rowan's departure field. The room-transfer record shows Rowan leaving skills room B at 11:15 and being received by the individual clinician at 11:15. I reviewed that record with the receiving clinician and confirm the corrected departure time above. The group continued for other members until its scheduled close.
+
+This correction applies only to Rowan Mercer's departure field on the January 19 group attendance roster. It does not change the group service date, scheduled opening or closing, the break recorded in the group clinical note, or the separate individual appointment. The original signed roster is retained in the chart with this correction attached to its attendance entry.
+
+No additional clinical service was provided in making this correction. The group discussion and the individual clinician's assessment remain documented in their respective service records.
+
+Electronically signed: Leah Chen, LCSW | January 20, 2026, 08:42
+Correction status: Final

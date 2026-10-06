@@ -1,0 +1,20 @@
+Document ID: BH-D006
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Appointment desk
+Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Export run 2026-01-16, 16:50 local
+View: appointments January 5–16, 2026; times local
+
+Encounter | Date  | Appointment type       | Scheduled time | Status
+HG-E101   | Jan05 | Individual therapy     | 09:00–09:50    | Completed
+HG-E102   | Jan06 | Coping skills group    | 10:00–11:30    | Attended part
+HG-E103   | Jan08 | Individual therapy     | 11:00–11:45    | No show
+HG-E104   | Jan09 | Family therapy         | 14:00–14:45    | Completed
+HG-E105   | Jan12 | Coping skills group    | 10:00–11:30    | Completed
+HG-E106   | Jan13 | Medication management  | 09:00–09:25    | Completed
+HG-E107   | Jan14 | Individual therapy     | 11:00–11:45    | Completed
+HG-E108   | Jan15 | Coping skills group    | 10:00–11:30    | Clinic cancelled
+HG-E109   | Jan16 | Family collateral      | 14:00–14:40    | Completed
+
+Desk comments: HG-E103 remained unarrived at close of its appointment slot on January 8. Outreach was assigned to the individual therapist's support queue. HG-E108 was removed from the active room schedule after staff illness was reported. A cancellation message was released to all registered members. Appointment HG-E109 was retained as a partner collateral contact after Rowan could not attend.

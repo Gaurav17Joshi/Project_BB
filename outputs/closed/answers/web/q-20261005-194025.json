@@ -1,0 +1,54 @@
+{
+ "id": null,
+ "question": "What happened on January 27, and why wasn't it counted?",
+ "answer": "**On January 27, Rowan was absent from the group.** The signed attendance record says, \u201cFinal roster confirms Rowan was absent for the entire group. No patient treatment contact occurred.\u201d [BH-D108] It also records that staff left a scheduling message, with \u201cno clinical discussion\u201d [BH-D108].\n\n| Record | What it shows | Why it was not counted |\n|---|---|---|\n| Group psychotherapy, contact `HG-M042/2026-01-27/HG-E116` | Marked **no-show**; patient not present; **0** minutes established. | The signed attendance record establishes no treatment contact occurred. |\n| Scheduling outreach, contact `HG-M042/2026-01-27/scheduling_or_outreach#BH-D108:S2` | A message was left after the missed group. | It was scheduling outreach, not therapy; no clinical discussion occurred. |\n| Draft and posted charge, document BH-D112 | The draft \u201cwas generated from the appointment template before the scheduled group\u201d and had no clinician attestation or finalized patient-specific narrative. [BH-D112] A group-psychotherapy charge was posted. | The draft and charge do not establish that care occurred, so they do not override the signed no-show record. |\n\n**Bottom line:** January 27 was excluded from therapy attendance and goal counting because the reliable attendance record documents a no-show, while the outreach was non-therapy and the draft/billing entry did not substantiate delivered care.",
+ "tool_calls": [
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "Rowan Mercer",
+    "date": "2026-01-27"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "Final roster confirms Rowan was absent for the entire group. No patient treatment contact occurred.",
+    "line": 16,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D112",
+    "quote": "It was generated from the appointment template before the scheduled group.",
+    "line": 16,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D112",
+    "quote": "Charge ID: CH-116 | Encounter: HG-E116",
+    "line": 19,
+    "context": 6
+   }
+  }
+ ],
+ "latency_s": 18.59,
+ "citations": {
+  "checked": 3,
+  "verified": 3,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 4,
+ "input_tokens": 10367,
+ "output_tokens": 561,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 6927,
+ "cost_usd": 0.00069
+}

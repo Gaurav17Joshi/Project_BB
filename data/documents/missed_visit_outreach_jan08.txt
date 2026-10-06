@@ -1,0 +1,17 @@
+Document ID: BH-D015
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Scheduling support log
+Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Related appointment: HG-E103, 2026-01-08, 11:00–11:45 local
+Entered by N. Ellis, 2026-01-08, 15:52 local
+
+11:12: Reception notified the clinician that Rowan had not checked in. There was no arrival call or cancellation message on the scheduling line. The appointment remained on the room schedule until its end time.
+
+11:45: Appointment marked no show. Rowan was not seen for the scheduled individual visit.
+
+13:20: Outbound call placed to the patient's recorded number. No answer; a brief callback request was left without clinical detail. The next scheduled appointment remained the family visit on January 9.
+
+15:36: Rowan returned the call. They said the morning had gotten away from them after a poor night of sleep and confirmed that they still intended to attend the next day's visit with Casey. Staff verified the appointment time and location and offered to resend the existing appointment list. Rowan requested the list through the portal.
+
+The callback addressed scheduling and contact information. No therapy intervention was conducted. The individual clinician was notified of the missed appointment so that barriers to attendance could be discussed at the next visit.

@@ -1,0 +1,583 @@
+{
+ "id": "DEV-01",
+ "question": "For January 5\u201330, 2026, how many therapy sessions did Rowan attend, by service type and in total, and on how many distinct days? Provide a reviewable abstraction with source support and explain records that could lead to duplicate or ineligible counts.",
+ "answer": "## Result\n\nFor **January 5\u201330, 2026**, Rowan attended **12 therapy sessions on 11 distinct days**. The reconciled abstraction establishes **5 individual psychotherapy**, **5 group psychotherapy**, and **2 family psychotherapy** sessions, with **no possible additional sessions**.\n\n| Service type | Attended sessions | Included contact IDs |\n|---|---:|---|\n| Individual psychotherapy | 5 | HG-M042/2026-01-05/HG-E101; HG-M042/2026-01-14/HG-E107; HG-M042/2026-01-19/HG-E111; HG-M042/2026-01-21/HG-E112; HG-M042/2026-01-26/HG-E115 |\n| Group psychotherapy | 5 | HG-M042/2026-01-06/HG-E102; HG-M042/2026-01-12/HG-E105; HG-M042/2026-01-19/HG-E110; HG-M042/2026-01-22/HG-E113; HG-M042/2026-01-29/HG-E118 |\n| Family psychotherapy | 2 | HG-M042/2026-01-09/HG-E104; HG-M042/2026-01-30/HG-E119 |\n| **Total** | **12** | |\n\nThe **11 distinct therapy days** were **2026-01-05, 2026-01-06, 2026-01-09, 2026-01-12, 2026-01-14, 2026-01-19, 2026-01-21, 2026-01-22, 2026-01-26, 2026-01-29, and 2026-01-30**.\n\n## Source-supported abstraction\n\n- **Individual psychotherapy:** E101\u2014BH-D002, BH-D006; E107\u2014BH-D006, BH-D011; E111\u2014BH-D105; E112\u2014BH-D106; E115\u2014BH-D110, BH-D111. The January 5 record states: [BH-D002] \u201cPatient-present individual therapy: 09:00\u201309:50 local; completed, 50 minutes.\u201d The January 14 record states: [BH-D011] \u201cPatient-present session 11:00\u201311:45 local; completed, 45 minutes\u201d. On January 21, the note documents the split contact and lost-connection interval: [BH-D106] \u201cPatient contact occurred 13:00\u201313:20 and 13:30\u201313:55. Connection was lost from 13:20\u201313:30; there was no therapeutic contact during that interval. Total patient psychotherapy contact: 45 minutes.\u201d The interval is one contact, E112, not separate sessions.\n- **Group psychotherapy:** E102\u2014BH-D004, BH-D005, BH-D006; E105\u2014BH-D005, BH-D006, BH-D009; E110\u2014BH-D101\u2013BH-D104; E113\u2014BH-D107, BH-D108; E118\u2014BH-D107, BH-D108. The early roster records partial attendance on January 6 and full attendance on January 12: [BH-D005] \u201c2026-01-06 | HG-E102 | 10:00\u201311:30 | 10:15 | 11:15 | Attended part\u201d and [BH-D005] \u201c2026-01-12 | HG-E105 | 10:00\u201311:30 | 10:00 | 11:30 | Attended full.\u201d The reconciled abstraction includes both partial and full attended contacts.\n- **Family psychotherapy:** E104\u2014BH-D006, BH-D007, BH-D008; E119\u2014BH-D113. The January 30 note separates the partner-only interval from Rowan\u2019s attendance: [BH-D113] \u201cPartner only: 13:00\u201313:15. Rowan present with partner: 13:15\u201313:45, 30 minutes.\u201d The included E119 contact is Rowan\u2019s patient-present portion.\n\n## Records relevant to duplicate or ineligible counts\n\n- **Duplicates and retransmissions were not counted as extra sessions.** BH-D007 and BH-D008 relate to the same January 9 family encounter, E104; BH-D110 and BH-D111 relate to the same January 26 individual encounter, E115. Each encounter is counted once. The January 19 roster copy also adds no visit: [BH-D104] \u201cThis is a retransmission of the January 19 roster for HG-E110. The received copy contains no new clinician signature and records no additional visit.\u201d\n- **The January 19 group correction changes attendance detail, not the number of encounters.** BH-D103 corrects E110\u2019s departure time to 11:15. It also documents the separate individual appointment: [BH-D103] \u201cThe room-transfer record shows Rowan leaving skills room B at 11:15 and being received by the individual clinician at 11:15.\u201d The correction states that it does not change the separate individual appointment [BH-D103]. E110 and E111 are therefore counted as separate contacts on the same day.\n- **E115 has an unresolved duration conflict, but not an attendance-count conflict.** BH-D110 and BH-D111 differ on the start time, yielding a documented range of **40\u201350 minutes**. The abstraction counts one attended session. A treating-clinician attestation or correction would settle the duration.\n- **No-shows, cancellations, and a draft did not establish attended therapy.** The January 8 individual appointment was a no-show; the abstraction identifies BH-D015 as the source. The January 27 group was also a no-show, and the January 28 individual appointment was patient-cancelled, per BH-D108. Although the January 27 draft contains template attendance text, it is explicitly unsigned: [BH-D112] \u201cStatus: DRAFT \u2014 UNSIGNED \u2014 system populated from scheduled group template\u201d. It was not counted as attendance. The January 15 group was clinic-cancelled per BH-D016.\n- **Other contacts were not psychotherapy sessions for this count.** The abstraction excludes scheduling or outreach, medication management, collateral contact, and care coordination. For example, BH-D010 supports the January 13 medication-management classification, and BH-D012 supports the January 16 collateral classification; neither is counted as psychotherapy attendance.\n- **Authorization and measurement-import records do not establish visits.** BH-D001 is an authorization record, not evidence of attended sessions. BH-D014 is a measurement import and is not a visit record. Neither was counted.",
+ "tool_calls": [
+  {
+   "tool": "session_counts",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "contacts",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-05",
+    "end": "2026-01-30",
+    "service_types": [
+     "therapy"
+    ],
+    "inclusion": [
+     "included",
+     "excluded",
+     "uncertain"
+    ]
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan Mercer",
+    "kinds": [
+     "all"
+    ]
+   }
+  },
+  {
+   "tool": "document_index",
+   "args": {
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "Patient-present",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "attended",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "Status: DRAFT",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "no-show",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "cancelled",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "medication management",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "collateral",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "30 minutes",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "Record status: Final",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "actual patient-contact",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 19",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 30",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "family psychotherapy",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "09:10",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 26",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "2026-01-21",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "2026-01-09",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "2026-01-05",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 12",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 6",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 19",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 22",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "search_documents",
+   "args": {
+    "text": "January 29",
+    "patient": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D005",
+    "quote": "2026-01-06 | HG-E102",
+    "line": 10,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D005",
+    "quote": "2026-01-12 | HG-E105",
+    "line": 11,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D103",
+    "quote": "This correction applies only to Rowan Mercer's departure field",
+    "line": 11,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "January 22 | HG-E113",
+    "line": 9,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "January 29 | HG-E118",
+    "line": 12,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D106",
+    "quote": "patient-contact intervals",
+    "line": 10,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D113",
+    "quote": "Partner only",
+    "line": 7,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "January 27 | HG-E116",
+    "line": 10,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D002",
+    "quote": "Patient-present individual therapy",
+    "line": 8,
+    "context": 1
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D007",
+    "quote": "Patient-present family therapy duration",
+    "line": 9,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D011",
+    "quote": "Patient-present session",
+    "line": 7,
+    "context": 1
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D102",
+    "quote": "Patient arrival: 10:00",
+    "line": 9,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D105",
+    "quote": "Patient contact: 11:15",
+    "line": 6,
+    "context": 1
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D110",
+    "quote": "Actual patient psychotherapy contact",
+    "line": 16,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D015",
+    "quote": "no-show",
+    "line": 12,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D112",
+    "quote": "Status: DRAFT",
+    "line": 9,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D103",
+    "quote": "corrected departure time above",
+    "line": 8,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D104",
+    "quote": "This is a retransmission",
+    "line": 20,
+    "context": 1
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D111",
+    "quote": "The full patient-contact interval",
+    "line": 10,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "January 27 | HG-E116",
+    "line": 10,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D016",
+    "quote": "scheduled for January 15",
+    "line": 9,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D012",
+    "quote": "Casey attended the arranged contact",
+    "line": 11,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D010",
+    "quote": "Rowan attended for medication management",
+    "line": 11,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D109",
+    "quote": "care coordination",
+    "line": 8,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D112",
+    "quote": "posted charge",
+    "line": 20,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D001",
+    "quote": "Authorized quantity: 8 group sessions",
+    "line": 10,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D014",
+    "quote": "No newly completed patient questionnaire",
+    "line": 17,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D015",
+    "quote": "Appointment marked no show",
+    "line": 11,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D008",
+    "quote": "Accompanying clinical entry",
+    "line": 11,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D104",
+    "quote": "Original signature",
+    "line": 14,
+    "context": 2
+   }
+  },
+  {
+   "tool": "find_patient",
+   "args": {
+    "query": "Rowan"
+   }
+  },
+  {
+   "tool": "session_counts",
+   "args": {
+    "patient": "HG-M042",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "HG-M042",
+    "date": "2026-01-21"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D106",
+    "quote": "Patient contact occurred",
+    "line": 0,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D002",
+    "quote": "Patient-present individual therapy",
+    "line": 0,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D011",
+    "quote": "Patient-present session",
+    "line": 0,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D113",
+    "quote": "Partner only",
+    "line": 0,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D005",
+    "quote": "Attended part",
+    "line": 0,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D103",
+    "quote": "room-transfer record",
+    "line": 0,
+    "context": 3
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D104",
+    "quote": "retransmission",
+    "line": 0,
+    "context": 2
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D112",
+    "quote": "DRAFT",
+    "line": 0,
+    "context": 3
+   }
+  }
+ ],
+ "latency_s": 92.66,
+ "citations": {
+  "checked": 9,
+  "verified": 9,
+  "repaired_after_first_pass": 1,
+  "unverified": []
+ },
+ "llm_calls": 14,
+ "input_tokens": 153014,
+ "output_tokens": 7732,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 124404,
+ "cost_usd": 0.00797
+}

@@ -1,0 +1,19 @@
+Document ID: BH-D002
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Outpatient psychotherapy
+Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Encounter HG-E101 | Service date 2026-01-05
+Clinician: Mara Voss, LCSW
+Patient-present individual therapy: 09:00–09:50 local; completed, 50 minutes.
+Signed 2026-01-05, 12:18 local
+
+Reason for care: Rowan describes several weeks of low mood, reduced interest in usual activities, fragmented sleep, and difficulty beginning ordinary tasks. Worry increases when thinking about returning to work after a recent leave. Rowan has been postponing email replies, avoiding conversations about the return date, and spending more time alone at home. They want a routine that makes the work transition feel manageable. The current outpatient episode is planned for January 5 through January 30, with review as treatment progresses.
+
+Rowan arrived independently and participated throughout the appointment. Speech was clear and organized. Affect was subdued but responsive, especially when discussing their partner's support. Rowan described waking in the night and then checking the time repeatedly. Daytime fatigue appears to make avoidance more likely. No immediate safety concern was identified in today's assessment; Rowan was able to discuss support contacts and ways to seek additional help if needed.
+
+PHQ-9 completed by Rowan on 2026-01-05: total score 18. The questionnaire is retained in the assessment tab. Clinical impressions are depressive symptoms with anxiety and behavioral avoidance. The score was reviewed alongside Rowan's account of sleep and daily functioning.
+
+Interventions: developed a shared description of the sleep, worry, and avoidance cycle; introduced behavioral activation; and practiced breaking one work-related task into a short, observable step. Rowan selected opening their work inbox for five minutes without requiring an immediate reply. We discussed setting a consistent morning anchor and recording the time they get out of bed. 
+
+Plan: participate in scheduled individual, group, and selected family appointments. Bring the activity record to the next individual appointment. Treatment goals and the proposed weekly schedule will be recorded in a separate plan. Rowan consented to involving their partner in a family visit focused on practical support.

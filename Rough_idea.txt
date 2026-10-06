@@ -1,0 +1,30 @@
+rough idea before i write the actual plan, just getting the shape of it down.
+
+Input:-  
+    - 31 plain .txt files containing a mix of different medical documents like clinical notes, attendance rosters, a signed treatment plan etc.
+    - Set of 5 questions for these. 
+Output
+    - The text answers for these questions
+
+so basically we get a folder of txt files about one patient and a json with 5 questions, and we have to
+output written answers. the thing is the answers are almost all numbers, like how many sessions did they
+attend, how many minutes per week, did they hit the goal in the treatment plan, and the documents are
+deliberately messy. the same session gets written up twice by two different clinicians, theres a
+correction that changes one time field in an earlier roster, theres a resent copy of the old uncorrected
+roster that shows up later, a billing charge for a session the patient actually no showed, a telehealth
+call that dropped and reconnected. so you cant just throw all the text at an LLM and ask it, right? it
+reads one page and gives you a confidently wrong number. and normal RAG wont work either because the
+right answer isnt sitting in any single passage, you only get it after merging 3 or 4 documents together
+and then doing arithmetic on whats left.
+
+so the way i think the system should work is, the LLM reads and the code decides. first we hash every file
+so duplicate copies get skipped and dont change any number. then one LLM call per document that pulls the
+facts into a fixed json schema, and every fact has to carry the exact quote it came from. the LLM reports
+times as written and never adds them up, code does all the subtraction, and then code checks that each
+quote actually exists in the source file, if it dosent the fact gets dropped. then reconcile, which is the
+real work and is all code with the rules written down, so same encounter id means one session and not two,
+a correction only replaces the field it names, signed beats unsigned draft, and if two notes genuinely
+disagree we store a range and log it as an open issue instead of picking one. all of that goes into sqlite
+and thats the abstraction. after that a question comes in, the LLM picks which query function to call,
+python does all the math and the LLM only writes the prose with no new numbers allowed. and it should
+survive a restart also.

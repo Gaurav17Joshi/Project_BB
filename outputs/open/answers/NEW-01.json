@@ -1,0 +1,37 @@
+{
+ "id": "NEW-01",
+ "question": "How many group therapy minutes did Rowan receive in the week starting January 19, 2026, and which contacts contributed?",
+ "answer": "**Answer:** Rowan Mercer received **105 minutes** of group therapy in the week starting January 19, 2026 (January 19\u201325, 2026). This total came from **2 contacts**.\n\n### Supporting Detail\n\n| Contact ID | Date | Minutes | Calculation / Notes |\n|------------|------|---------|---------------------|\n| HG-M042/2026-01-19/HG-E110 | 2026-01-19 | 60 | BH-D101: 10:00\u201310:45, 11:00\u201311:15 = 60 min (departure 11:30\u219211:15 per correction BH-D103) \\| BH-D102: 10:00\u201311:15 = 75 min \u2013 15 min break = 60 min |\n| HG-M042/2026-01-22/HG-E113 | 2026-01-22 | 45 | BH-D108: 10:30\u201311:30 = 60 min \u2013 15 min break = 45 min |\n\n**Total:** 60 + 45 = **105 minutes** (1.75 hours)\n\n### Uncertainties / Issues\n- Both contacts have open issues recorded: HG-M042/I005 and HG-M042/I006 respectively. These are documented in the `issues` field of each contact record but do not affect the settled minutes calculation.",
+ "tool_calls": [
+  {
+   "tool": "find_patient",
+   "args": {
+    "query": "Rowan Mercer"
+   }
+  },
+  {
+   "tool": "weekly_summary",
+   "args": {
+    "patient": "HG-M042",
+    "start": "2026-01-19",
+    "end": "2026-01-25",
+    "service_types": [
+     "group_psychotherapy"
+    ]
+   }
+  }
+ ],
+ "latency_s": 20.06,
+ "citations": {
+  "checked": 0,
+  "verified": 0,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 3,
+ "input_tokens": 8141,
+ "output_tokens": 972,
+ "model": "qwen3.5:9b",
+ "cached_input_tokens": 0,
+ "cost_usd": 0.0
+}

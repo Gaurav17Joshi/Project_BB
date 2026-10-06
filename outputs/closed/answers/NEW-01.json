@@ -1,0 +1,137 @@
+{
+ "id": "NEW-01",
+ "question": "How many group therapy minutes did Rowan receive in the week starting January 19, 2026, and which contacts contributed?",
+ "answer": "Rowan received **105 group therapy minutes** during the week starting January 19, 2026. The weekly summary includes two contacts:\n\n| Contact | Minutes |\n|---|---:|\n| `HG-M042/2026-01-19/HG-E110` | 60 |\n| `HG-M042/2026-01-22/HG-E113` | 45 |\n\nThe January 19 roster copy says, \u201cThe attached attendance sheet was resent following a request for the original group roster.\u201d [BH-D104] The abstraction identifies that copy as merged into the existing January 19 contact, not counted as an additional contact.",
+ "tool_calls": [
+  {
+   "tool": "weekly_summary",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-19",
+    "end": "2026-01-25",
+    "service_types": [
+     "group_psychotherapy"
+    ]
+   }
+  },
+  {
+   "tool": "contacts",
+   "args": {
+    "patient": "Rowan Mercer",
+    "start": "2026-01-19",
+    "end": "2026-01-25",
+    "service_types": [
+     "group_psychotherapy"
+    ],
+    "inclusion": [
+     "included",
+     "excluded",
+     "uncertain"
+    ]
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan Mercer",
+    "kinds": [
+     "all"
+    ]
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D102",
+    "quote": "10:00",
+    "line": 0,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D103",
+    "quote": "correction",
+    "line": 0,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D108",
+    "quote": "10:30",
+    "line": 0,
+    "context": 5
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D101",
+    "quote": "Attended",
+    "line": 0,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D107",
+    "quote": "Attended",
+    "line": 0,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D104",
+    "quote": "resent",
+    "line": 0,
+    "context": 3
+   }
+  },
+  {
+   "tool": "weekly_summary",
+   "args": {
+    "patient": "Rowan",
+    "start": "2026-01-19",
+    "end": "2026-01-25",
+    "service_types": [
+     "group_psychotherapy"
+    ]
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "Rowan",
+    "kinds": []
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D104",
+    "quote": "ATTACHED ROSTER COPY",
+    "line": 10,
+    "context": 8
+   }
+  }
+ ],
+ "latency_s": 23.95,
+ "citations": {
+  "checked": 1,
+  "verified": 1,
+  "repaired_after_first_pass": 1,
+  "unverified": []
+ },
+ "llm_calls": 6,
+ "input_tokens": 19265,
+ "output_tokens": 1475,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 9294,
+ "cost_usd": 0.00183
+}

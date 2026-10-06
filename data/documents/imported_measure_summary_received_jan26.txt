@@ -1,0 +1,19 @@
+Document ID: BH-D014
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Administrative import receipt
+Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Received into chart: 2026-01-26, 07:44 local
+Source: program measurement summary batch HG-MEAS-0126
+Import operator: N. Ellis
+
+The batch received this morning contains the following measurement summary for the outpatient episode. The source record identifies the patient portal submission retained by the treatment team.
+
+Measure | Result | Date completed | Source form
+PHQ-9   | 14     | 2026-01-16     | HG-Q116
+
+Source review excerpt, Mara Voss, LCSW: some improvement in depressive symptoms; ongoing avoidance of work communication and inconsistent sleep. Continue current therapeutic focus and review practical functioning at the next direct appointment. Original clinician review timestamp: January 16, 2026, 09:10 local.
+
+Import detail: copied result from the January 16 portal form. January 26 is the date the summary was received and filed. No newly completed patient questionnaire is included in this batch. The source form identifier and original completion date were retained in the imported row.
+
+ The measurement tab continues to hold the original patient submission. This receipt was entered by the administrative desk and does not document a visit with Rowan.

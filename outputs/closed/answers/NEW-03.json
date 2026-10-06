@@ -1,0 +1,36 @@
+{
+ "id": "NEW-03",
+ "question": "How did the types and amounts of care delivered change before and after a treatment-plan change, for each patient?",
+ "answer": "## Rowan Mercer (HG-M042)\n\n**The record does not document a treatment-plan change, so a before/after comparison of care types or amounts cannot be made.** The plan comparison identifies one goal version, effective **2026-01-05 through 2026-01-30**. The available plan text sets a participation target; it does not establish how much care was actually delivered on either side of a plan change.\n\n| Record detail | Finding |\n|---|---|\n| Treatment-plan change | None documented; the comparison tool reports one goal version. |\n| Goal in the available plan | At least **3 therapy days** and **at least 150 minutes** in each Monday\u2013Sunday week. |\n| Care counted toward that goal | Patient-present individual, group, or family psychotherapy. Medication management, collateral-only contacts, and care coordination do not count. |\n\nSource: [BH-D003] \u201cLocal treatment participation goal: at least 3 therapy days and at least 150 minutes of patient-present therapy in each Monday\u2013Sunday week. A therapy day is a calendar day on which Rowan participates in individual, group, or family psychotherapy. Patient-present individual, group, and family therapy contribute to the minute goal. Medication management, contacts with collateral informants only, and care coordination do not contribute. This is the program's individualized treatment-plan goal for Rowan.\u201d\n\nThese are **goal thresholds, not delivered-care totals**. Because no change is documented, the record does not support attributing any change in the types or amounts of care to a treatment-plan change.",
+ "tool_calls": [
+  {
+   "tool": "plan_change_comparison",
+   "args": {
+    "patient": "Rowan Mercer",
+    "change_date": "2026-01-05"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D003",
+    "quote": "Local treatment participation goal",
+    "line": 12,
+    "context": 3
+   }
+  }
+ ],
+ "latency_s": 13.9,
+ "citations": {
+  "checked": 1,
+  "verified": 1,
+  "repaired_after_first_pass": 0,
+  "unverified": []
+ },
+ "llm_calls": 3,
+ "input_tokens": 5097,
+ "output_tokens": 995,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 4276,
+ "cost_usd": 0.00062
+}

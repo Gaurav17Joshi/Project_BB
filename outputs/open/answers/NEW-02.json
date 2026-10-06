@@ -1,0 +1,54 @@
+{
+ "id": "NEW-02",
+ "question": "Which patients had two consecutive Monday\u2013Sunday weeks below their treatment-plan requirements, and whose inclusion depends on unresolved documentation?",
+ "answer": "**Answer:** None of the patients in the record have two consecutive Monday\u2013Sunday weeks below their treatment-plan requirements whose inclusion depends on unresolved documentation.\n\n**Supporting detail:**\n- For the review period 2026-01-05 to 2026-01-30, the `consecutive_weeks_below` tool returned:\n  - **definite**: Rowan Mercer (HG-M042) with two consecutive weeks below goal (both \"not_met\" verdicts):\n    - Week 2026-01-05 to 2026-01-11: 3 therapy days, 140 minutes \u2192 verdict \"not_met\" (140 min < 150)\n    - Week 2026-01-12 to 2026-01-18: 2 therapy days, 120 minutes \u2192 verdict \"not_met\" (2 therapy days < 3; 120 min < 150)\n  - **depends_on_unresolved_documentation**: empty list\n\n**Uncertainties:** None. The record contains only one patient (Rowan Mercer), and the tool explicitly reports an empty list for patients whose inclusion depends on unresolved documentation.",
+ "tool_calls": [
+  {
+   "tool": "consecutive_weeks_below",
+   "args": {
+    "n": 2,
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "consecutive_weeks_below",
+   "args": {
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  }
+ ],
+ "latency_s": 33.77,
+ "citations": {
+  "checked": 3,
+  "verified": 0,
+  "repaired_after_first_pass": 0,
+  "unverified": [
+   {
+    "quote": "not_met",
+    "cited": [],
+    "verified": false,
+    "found_in": null
+   },
+   {
+    "quote": "not_met",
+    "cited": [],
+    "verified": false,
+    "found_in": null
+   },
+   {
+    "quote": "not_met",
+    "cited": [],
+    "verified": false,
+    "found_in": null
+   }
+  ]
+ },
+ "llm_calls": 4,
+ "input_tokens": 10811,
+ "output_tokens": 1666,
+ "model": "qwen3.5:9b",
+ "cached_input_tokens": 0,
+ "cost_usd": 0.0
+}

@@ -1,0 +1,15 @@
+Document ID: BH-D013
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Measurement review
+Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Instrument: PHQ-9 | Patient portal form HG-Q116
+Completed by patient: 2026-01-16, 08:17 local
+Total score: 14
+Reviewed by Mara Voss, LCSW, 2026-01-16, 09:10 local
+
+The submitted score is lower than the intake score of 18 recorded on January 5. In the optional update field, Rowan wrote that getting out of the apartment had become a little easier, while thinking about work continued to make them want to put things off. Rowan also described sleep as inconsistent. No additional questionnaire was submitted with this update.
+
+Clinician review: the score and recent individual-session material suggest some improvement in depressive symptoms. Persistent avoidance, difficulty initiating work communication, and sleep disruption remain clinically relevant. Rowan has attempted small activities and communication practice but has not yet established a reliable routine. Continue the current therapeutic focus and review functioning alongside symptom change during the next direct appointment.
+
+This entry records review of the portal submission; no clinical appointment occurred at the time of review. The form remains attached to the measurement tab with its original completion date.

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "DEV-01",
+    "question": "For January 5–30, 2026, how many therapy sessions did Rowan attend, by service type and in total, and on how many distinct days? Provide a reviewable abstraction with source support and explain records that could lead to duplicate or ineligible counts."
+  },
+  {
+    "id": "DEV-02",
+    "question": "How many therapy minutes and hours did Rowan actually receive during the review period, overall and for each Monday–Sunday week? Show calculations or supporting detail, and report any conclusion the available documents do not settle."
+  },
+  {
+    "id": "DEV-03",
+    "question": "For each week, did the delivered therapy meet the goal documented in Rowan’s treatment plan? State the goal, the relevant therapy-day and minute totals, and whether it was met, not met, or cannot be determined from the current record."
+  },
+  {
+    "id": "DEV-04",
+    "question": "Reconstruct the care on January 19 and January 21. How many therapy contacts and patient therapy minutes occurred on each date, and how do the attendance records, clinical notes, later documents, and telehealth records affect your answer?"
+  },
+  {
+    "id": "DEV-05",
+    "question": "Summarize the documented symptom course during the episode and the reason for the additional individual contact on January 19. Which symptom assessments are distinct, and what conclusions about progress can and cannot be supported?"
+  }
+]

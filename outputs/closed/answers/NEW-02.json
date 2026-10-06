@@ -1,0 +1,119 @@
+{
+ "id": "NEW-02",
+ "question": "Which patients had two consecutive Monday\u2013Sunday weeks below their treatment-plan requirements, and whose inclusion depends on unresolved documentation?",
+ "answer": "**No patients are identified whose inclusion depends on unresolved documentation.** The abstraction lists none in that category. Rowan Mercer (HG-M042) is instead identified as **definitely** below the treatment-plan requirements for two consecutive Monday\u2013Sunday weeks:\n\n| Week | Therapy days | Minutes | Verdict |\n|---|---:|---:|---|\n| 2026-01-05 to 2026-01-11 | 3 | 140 | Not met |\n| 2026-01-12 to 2026-01-18 | 2 | 120 | Not met |\n\nThe unresolved documentation concerns a different week, not those two consecutive weeks: the records conflict on the January 26 session duration. One states, [BH-D111] \u201cActual patient psychotherapy contact: 09:10\u201309:50, 40 minutes.\u201d The other states, [BH-D110] \u201cActual patient psychotherapy contact: 09:00\u201309:50, 50 minutes.\u201d Thus, the answer to the question is **no patients**; Rowan\u2019s consecutive below-requirement weeks are classified as definite, not dependent on that unresolved conflict.",
+ "tool_calls": [
+  {
+   "tool": "consecutive_weeks_below",
+   "args": {
+    "n": 2,
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "treatment_goals",
+   "args": {
+    "patient": "HG-M042"
+   }
+  },
+  {
+   "tool": "goal_compliance",
+   "args": {
+    "patient": "HG-M042",
+    "start": "2026-01-05",
+    "end": "2026-01-30"
+   }
+  },
+  {
+   "tool": "issues",
+   "args": {
+    "patient": "HG-M042",
+    "kinds": []
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "HG-M042",
+    "date": "2026-01-05"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "HG-M042",
+    "date": "2026-01-06"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "HG-M042",
+    "date": "2026-01-09"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "HG-M042",
+    "date": "2026-01-12"
+   }
+  },
+  {
+   "tool": "day_detail",
+   "args": {
+    "patient": "HG-M042",
+    "date": "2026-01-14"
+   }
+  },
+  {
+   "tool": "consecutive_weeks_below",
+   "args": {
+    "n": 2,
+    "start": "2026-01-01",
+    "end": "2026-01-31"
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D110",
+    "quote": "Actual patient psychotherapy contact",
+    "line": 0,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D111",
+    "quote": "full patient-contact interval",
+    "line": 0,
+    "context": 4
+   }
+  },
+  {
+   "tool": "get_document_passage",
+   "args": {
+    "doc_id": "BH-D110",
+    "quote": "attestation",
+    "line": 0,
+    "context": 4
+   }
+  }
+ ],
+ "latency_s": 35.05,
+ "citations": {
+  "checked": 2,
+  "verified": 2,
+  "repaired_after_first_pass": 1,
+  "unverified": []
+ },
+ "llm_calls": 9,
+ "input_tokens": 30871,
+ "output_tokens": 2514,
+ "model": "gpt-6-luna",
+ "cached_input_tokens": 20214,
+ "cost_usd": 0.00252
+}

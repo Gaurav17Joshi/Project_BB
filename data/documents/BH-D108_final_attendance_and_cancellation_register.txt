@@ -1,0 +1,22 @@
+Document ID: BH-D108
+HARBOR GROVE BEHAVIORAL HEALTH
+Outpatient attendance and appointment disposition extract
+Rowan Mercer | DOB: 1991-04-12 | MRN: HG-M042
+Extract prepared January 30, 2026, 17:10
+All times are local. Group rows contain actual patient arrival and departure fields; the scheduled interval identifies the booked appointment.
+
+Service date | Encounter | Service | Scheduled | Actual arrival | Actual departure | Final disposition
+January 22 | HG-E113 | Skills group | 10:00–11:30 | 10:30 | 11:30 | Attended, late arrival
+January 27 | HG-E116 | Skills group | 10:00–11:30 | — | — | No show; patient did not attend
+January 28 | HG-E117 | Individual | 14:00–14:45 | — | — | Patient cancelled before appointment
+January 29 | HG-E118 | Skills group | 10:00–11:30 | 10:00 | 11:30 | Attended
+
+January 22 attendance attestation: Rowan arrived at 10:30 and remained until the group closed. Signed: Leah Chen, LCSW, January 22, 12:09.
+
+January 27 attendance attestation: Final roster confirms Rowan was absent for the entire group. No patient treatment contact occurred. An outreach message inviting the patient to contact scheduling was left after the group; no clinical discussion occurred. Signed: Leah Chen, LCSW, January 27, 11:54.
+
+January 28 scheduling entry: Cancellation received from patient January 28, 08:12. Rowan reported a personal scheduling conflict. Appointment HG-E117 was cancelled before the scheduled start; no replacement appointment was booked within January 2026. Entered by Ana Reed, January 28, 08:18.
+
+January 29 attendance attestation: Rowan was present from opening through closing. Signed: Leah Chen, LCSW, January 29, 12:15.
+
+Register status: Final. Break details remain in the corresponding group activity records.

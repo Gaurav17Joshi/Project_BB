@@ -1,0 +1,17 @@
+Document ID: BH-D012
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health | Family collateral
+Patient: Rowan Mercer | DOB 1991-04-12 | MRN HG-M042
+Encounter HG-E109 | Date 2026-01-16 | 14:00–14:40 local
+Clinician: Mara Voss, LCSW
+Participant: Casey Mercer, partner. Rowan was absent for the entire contact.
+Signed 2026-01-16, 16:08 local
+
+Casey attended the arranged contact after Rowan advised the office that they could not participate. Existing consent for partner involvement was confirmed in the chart. This was a collateral discussion with Casey only, focused on observations at home and ways to support the treatment plan.
+
+Casey reported that Rowan had been getting out for short walks and seemed more willing to discuss the coming week. Mornings remain difficult, and Casey described Rowan becoming quiet when the conversation turns to work. The scheduled evening check-in has reduced unplanned reminders. Casey said it takes effort to resist offering multiple solutions but has noticed less argument when asking what kind of help Rowan wants.
+
+I gathered information about daily routine and reviewed supportive responses previously practiced in the family appointment. We discussed preserving Rowan's ownership of tasks while keeping practical support available. Casey will continue to offer a walk or shared meal and will use the agreed check-in rather than repeated progress questions.
+
+Rowan did not join in person, by telephone, or by video. No patient-present psychotherapy occurred during this contact. Information from Casey will be incorporated into the next direct clinical review with Rowan. No new treatment decision was made with Rowan during this appointment.

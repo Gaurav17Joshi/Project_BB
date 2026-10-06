@@ -1,0 +1,15 @@
+Document ID: BH-D001
+SYNTHETIC TRAINING RECORD — Entirely fictional patient and organization.
+
+Harbor Grove Behavioral Health
+Administrative correspondence received 2026-01-04, 15:26 local
+Member: Rowan Mercer | DOB: 1991-04-12 | MRN: HG-M042
+Authorization: HG-A260104-88
+
+To: Outpatient program authorization desk
+The requested group service authorization is approved for the period January 5, 2026 through January 30, 2026. Authorized quantity: 8 group sessions. One authorization unit represents one scheduled group session. The service description is outpatient therapeutic group work supporting the submitted behavioral health treatment plan. This letter does not authorize individual therapy, family therapy, or medication appointments under the group service quantity.
+
+The approved period permits the practice to arrange group appointments within the indicated dates. Scheduling remains the responsibility of Harbor Grove Behavioral Health and the member. Changes in appointment dates within the approved period may be made by the scheduling desk. 
+
+Administrative entry, N. Ellis, 2026-01-05, 08:05 local:
+Letter attached to the program account. Rowan was informed that the office would send a weekly appointment list. Scheduling staff will use the approved group quantity when arranging appointments. No service attendance record accompanies this letter.
