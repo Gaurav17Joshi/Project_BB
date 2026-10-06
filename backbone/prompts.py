@@ -29,7 +29,7 @@ Rules:
 - Dates as YYYY-MM-DD (the year is printed in the document header if omitted in a row). Times as HH:MM.
 """
 
-# Extra rules for small local models, which broke the base rules above in a first run (see README).
+# Extra rules for small local models, which broke the base rules above in a first run (see SOLUTION.md section 8).
 EXTRACT_SYSTEM_LOCAL_ADDENDUM = """
 Additional rules (follow strictly):
 - source_role: a roster, register, desk sheet or attendance extract is `attendance_record`, even if it says it was

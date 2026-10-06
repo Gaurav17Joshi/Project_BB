@@ -1,6 +1,6 @@
 """Deterministic reconciliation: verified source records -> one row per service contact.
 
-Rules (documented in the README; every decision is written to status_basis / minutes_basis / issues):
+Rules (documented in MORE_DETAILS.md and SOLUTION.md section 3.4; every decision is written to status_basis / minutes_basis / issues):
 - Records are clustered by encounter ID (linked through appointment IDs). Records without IDs join a
   same-day, same-type cluster with overlapping times, else stand alone. Non-therapy administrative
   records (outreach calls, scheduling) never merge into a therapy encounter.
